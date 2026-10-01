@@ -175,16 +175,27 @@ body {
 .practice {
     position: absolute;
 
-    left: 7vw;
-    top: 8vh;
+    left: 0;
+    right: 0;
+    bottom: 4vh;
 
     z-index: 6;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 0 7vw;
 
     font-size: 11px;
     letter-spacing: 0.18em;
     text-transform: uppercase;
 
     color: #555;
+}
+
+.practice span {
+    display: block;
 }
 
 
@@ -279,8 +290,11 @@ body {
     }
 
     .practice {
-        left: 8vw;
-        top: 7vh;
+        left: 0;
+        right: 0;
+        bottom: 3vh;
+
+        padding: 0 8vw;
 
         font-size: 8px;
         letter-spacing: 0.15em;
@@ -329,14 +343,6 @@ body {
         height: 54vh;
     }
 
-    /*
-       Portrait mobile:
-       Logo centred horizontally.
-       Logo centre positioned in the lower
-       space between the contact details
-       and the bottom of the page.
-    */
-
     .logo {
         left: 50%;
         top: 79vh;
@@ -360,10 +366,14 @@ body {
     }
 
     .practice {
-        left: 6vw;
-        top: 8vh;
+        left: 0;
+        right: 0;
+        bottom: 4vh;
+
+        padding: 0 6vw;
 
         font-size: 8px;
+        letter-spacing: 0.15em;
     }
 
     .message {
@@ -420,7 +430,9 @@ body {
 @media (max-width: 380px) and (orientation: portrait) {
 
     .practice {
-        top: 6vh;
+        bottom: 3vh;
+
+        padding: 0 7vw;
     }
 
     .message {
@@ -475,9 +487,9 @@ body {
 
 
     <div class="practice">
-        Architecture&nbsp;&nbsp;·&nbsp;&nbsp;
-        Interior&nbsp;&nbsp;·&nbsp;&nbsp;
-        Planning
+        <span>Architecture</span>
+        <span>Interiors</span>
+        <span>Planning</span>
     </div>
 
 
