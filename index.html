@@ -1,19 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>MSI Architecture | Coming Soon</title>
-
-<meta name="description" content="MSI Architecture — our new website is currently under development.">
+<title>MSI Architecture</title>
 
 <style>
-
-/* =========================================================
-   BASIC SETTINGS
-   ========================================================= */
 
 * {
     box-sizing: border-box;
@@ -29,739 +22,462 @@ body {
 
 body {
     font-family: Arial, Helvetica, sans-serif;
-    color: #252525;
     background: #f7f7f5;
+    color: #222;
+    overflow: hidden;
 }
 
 
-/* =========================================================
+/* =========================
    MAIN PAGE
-   ========================================================= */
+========================= */
 
 .page {
     position: relative;
-
-    width: 100%;
-    min-height: 100vh;
-    min-height: 100svh;
-
+    width: 100vw;
+    height: 100vh;
+    min-height: 600px;
     overflow: hidden;
-
     background:
         linear-gradient(
-            105deg,
-            #ffffff 0%,
-            #fafafa 42%,
-            #eeeeeb 100%
+            135deg,
+            rgba(255,255,255,0.98) 0%,
+            rgba(247,247,245,0.98) 52%,
+            rgba(238,238,235,0.98) 100%
         );
 }
 
 
-/* =========================================================
+/* =========================
    ARCHITECTURAL BACKGROUND
-   ========================================================= */
+========================= */
 
 .architecture {
     position: absolute;
+    inset: 0;
+    overflow: hidden;
+    z-index: 1;
+}
 
-    right: -5%;
-    top: -10%;
+.architecture::before {
+    content: "";
+    position: absolute;
 
-    width: 62%;
-    height: 125%;
+    width: 58vw;
+    height: 125vh;
 
-    transform: rotate(-7deg);
+    left: 40%;
+    top: -8%;
+
+    transform: skewX(-14deg);
 
     background:
         linear-gradient(
             90deg,
-            transparent 0%,
-            rgba(255,255,255,0.7) 18%,
-            rgba(210,210,207,0.18) 19%,
-            transparent 20%,
-            transparent 39%,
-            rgba(255,255,255,0.75) 40%,
-            rgba(210,210,207,0.16) 41%,
-            transparent 42%,
-            transparent 65%,
-            rgba(255,255,255,0.65) 66%,
-            rgba(210,210,207,0.12) 67%,
-            transparent 68%
+            rgba(255,255,255,0.98) 0%,
+            rgba(244,244,241,0.95) 48%,
+            rgba(224,224,220,0.90) 100%
         );
 
-    opacity: 0.9;
+    box-shadow:
+        -30px 0 70px rgba(0,0,0,0.035);
+}
+
+.architecture::after {
+    content: "";
+    position: absolute;
+
+    width: 42vw;
+    height: 90vh;
+
+    right: -10%;
+    bottom: -25%;
+
+    transform: rotate(-12deg);
+
+    background:
+        linear-gradient(
+            120deg,
+            rgba(255,255,255,0.95),
+            rgba(229,229,225,0.82)
+        );
+
+    box-shadow:
+        0 -30px 80px rgba(0,0,0,0.035);
 }
 
 
-/* =========================================================
-   RIBBED GLASS
-   ========================================================= */
+/* =========================
+   FROSTED GLASS
+========================= */
 
 .glass-zone {
     position: absolute;
 
-    right: 7%;
-    top: 10%;
+    right: 4vw;
+    top: 7vh;
 
-    width: 48%;
-    height: 80%;
+    width: 31vw;
+    height: 86vh;
 
-    overflow: hidden;
-
-    background:
-        linear-gradient(
-            90deg,
-            rgba(255,255,255,0.25),
-            rgba(255,255,255,0.62),
-            rgba(255,255,255,0.20)
-        );
-
-    border-left: 1px solid rgba(255,255,255,0.75);
-    border-right: 1px solid rgba(255,255,255,0.65);
-
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-
-    opacity: 0.9;
-}
-
-
-.glass-zone::before {
-
-    content: "";
-
-    position: absolute;
-
-    inset: 0;
+    z-index: 2;
 
     background:
         repeating-linear-gradient(
             90deg,
-            rgba(255,255,255,0.00) 0px,
-            rgba(255,255,255,0.00) 7px,
-            rgba(255,255,255,0.58) 8px,
-            rgba(255,255,255,0.58) 10px,
-            rgba(170,170,168,0.08) 11px,
-            rgba(170,170,168,0.08) 16px
+            rgba(255,255,255,0.48) 0px,
+            rgba(255,255,255,0.48) 3px,
+            rgba(215,215,211,0.28) 4px,
+            rgba(255,255,255,0.22) 10px
         );
 
-    opacity: 0.75;
+    backdrop-filter: blur(4px);
+
+    border-left: 1px solid rgba(255,255,255,0.8);
+    border-right: 1px solid rgba(255,255,255,0.65);
+
+    box-shadow:
+        -30px 0 80px rgba(0,0,0,0.045),
+        30px 0 80px rgba(255,255,255,0.4);
 }
 
 
-/* =========================================================
-   TEMPORARY MSI LOGO
-   ========================================================= */
+/* =========================
+   LOGO
+========================= */
 
 .logo {
-
     position: absolute;
 
-    right: 16%;
+    right: 7vw;
+    top: 12vh;
+
+    width: clamp(160px, 16vw, 270px);
+
+    z-index: 6;
+}
+
+.logo img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+
+/* =========================
+   LOGO BASE
+========================= */
+
+.logo-bottom {
+    display: flex;
+    align-items: center;
+
+    margin-top: 18px;
+}
+
+.logo-line {
+    height: 3px;
+    width: 85px;
+
+    background: #080808;
+}
+
+.logo-small {
+    width: 9px;
+    height: 9px;
+
+    margin-left: 8px;
+
+    background: #080808;
+}
+
+
+/* =========================
+   PRACTICE TYPE
+========================= */
+
+.practice {
+    position: absolute;
+
+    left: 7vw;
+    top: 8vh;
+
+    z-index: 6;
+
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+
+    color: #555;
+}
+
+
+/* =========================
+   MAIN MESSAGE
+========================= */
+
+.message {
+    position: absolute;
+
+    left: 7vw;
     top: 50%;
 
     transform: translateY(-50%);
 
-    display: flex;
+    width: min(620px, 48vw);
 
-    flex-direction: column;
-
-    align-items: flex-start;
-
-    z-index: 5;
+    z-index: 6;
 }
 
+.message h1 {
+    margin: 0;
 
-.logo-top {
-
-    display: flex;
-
-    gap: 8px;
-}
-
-
-.logo-box {
-
-    width: clamp(70px, 7vw, 115px);
-    height: clamp(70px, 7vw, 115px);
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    background: #080808;
-
-    color: white;
-
-    font-size: clamp(42px, 5vw, 78px);
-
-    font-weight: 300;
-
-    line-height: 1;
-}
-
-
-.logo-bottom {
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 25px;
-
-    margin-top: 22px;
-
-    width: 100%;
-}
-
-
-.logo-line {
-
-    height: 18px;
-
-    background: #080808;
-
-    flex: 1;
-}
-
-
-.logo-small {
-
-    width: 70px;
-
-    height: 18px;
-
-    background: #080808;
-}
-
-
-/* =========================================================
-   CONTENT
-   ========================================================= */
-
-.content {
-
-    position: relative;
-
-    z-index: 10;
-
-    width: 100%;
-
-    min-height: 100vh;
-    min-height: 100svh;
-
-    padding: 55px 6vw;
-
-    display: flex;
-
-    flex-direction: column;
-
-    justify-content: space-between;
-}
-
-
-/* =========================================================
-   TOP LABEL
-   ========================================================= */
-
-.practice {
-
-    font-size: 12px;
-
-    letter-spacing: 0.16em;
-
-    text-transform: uppercase;
-
-    color: #3f3f3d;
-}
-
-
-/* =========================================================
-   MAIN MESSAGE
-   ========================================================= */
-
-.message {
-
-    max-width: 670px;
-
-    margin-top: auto;
-    margin-bottom: auto;
-}
-
-
-h1 {
-
-    margin: 0 0 34px;
-
-    max-width: 720px;
-
-    font-size: clamp(52px, 7.5vw, 105px);
-
-    line-height: 0.91;
-
-    letter-spacing: -0.055em;
-
+    font-size: clamp(48px, 5vw, 82px);
+    line-height: 0.98;
     font-weight: 500;
+    letter-spacing: -0.045em;
 
-    color: #292927;
+    color: #222;
 }
-
 
 .intro {
+    margin-top: 32px;
 
-    max-width: 540px;
+    max-width: 510px;
 
-    font-size: clamp(16px, 1.35vw, 20px);
+    font-size: 17px;
+    line-height: 1.65;
 
-    line-height: 1.55;
-
-    color: #575754;
+    color: #555;
 }
-
-
-/* =========================================================
-   CONTACT
-   ========================================================= */
 
 .contact {
-
-    margin-top: 42px;
-
-    padding-top: 14px;
-
-    border-top: 1px solid rgba(35,35,35,0.22);
-
-    width: fit-content;
+    margin-top: 48px;
 
     display: flex;
-
     flex-direction: column;
+    align-items: flex-start;
 
-    gap: 7px;
+    gap: 6px;
 }
-
 
 .contact-title {
-
-    margin-bottom: 4px;
+    margin-bottom: 6px;
 
     font-size: 10px;
-
+    line-height: 1;
     letter-spacing: 0.18em;
-
     text-transform: uppercase;
 
-    color: #4b4b48;
+    color: #888;
 }
-
 
 .contact a {
+    color: #222;
 
-    font-size: 15px;
-
-    color: #292927;
+    font-size: 14px;
 
     text-decoration: none;
-}
 
+    border-bottom: 1px solid rgba(34,34,34,0.22);
+}
 
 .contact a:hover {
-
-    text-decoration: underline;
+    border-bottom-color: #222;
 }
 
 
-/* =========================================================
-   PORTRAIT PHONES
-   ========================================================= */
+/* =========================
+   PORTRAIT MOBILE
+========================= */
 
-@media (max-width: 800px) and (orientation: portrait) {
+@media (max-width: 700px) and (orientation: portrait) {
 
-    .page {
-
-        min-height: 100svh;
-
+    body {
         overflow: hidden;
     }
 
-
-    .content {
-
-        padding: 28px 7vw 34px;
-
-        min-height: 100svh;
-
-        justify-content: flex-start;
+    .page {
+        height: 100svh;
+        min-height: 560px;
     }
-
 
     .practice {
+        left: 8vw;
+        top: 7vh;
 
-        font-size: 10px;
-
-        letter-spacing: 0.14em;
-
-        line-height: 1.5;
-
-        max-width: 90%;
+        font-size: 8px;
+        letter-spacing: 0.15em;
     }
-
 
     .message {
+        left: 8vw;
+        top: 19vh;
 
-        margin-top: 15vh;
+        transform: none;
 
-        margin-bottom: 0;
-
-        max-width: 100%;
+        width: 84vw;
     }
 
-
-    h1 {
-
-        margin-bottom: 24px;
-
-        font-size: clamp(48px, 15vw, 76px);
-
-        line-height: 0.91;
-
-        letter-spacing: -0.055em;
-
-        max-width: 95%;
+    .message h1 {
+        font-size: clamp(38px, 11vw, 58px);
+        line-height: 0.98;
     }
-
 
     .intro {
+        margin-top: 24px;
 
-        max-width: 92%;
-
-        font-size: 16px;
-
-        line-height: 1.5;
-    }
-
-
-    .contact {
-
-        margin-top: 28px;
-
-        padding-top: 12px;
-
-        gap: 6px;
-    }
-
-
-    .contact a {
+        max-width: 82vw;
 
         font-size: 14px;
+        line-height: 1.55;
     }
 
-
-    /* Move the architectural glass behind the lower page */
-
-    .architecture {
-
-        right: -35%;
-
-        top: 42%;
-
-        width: 115%;
-
-        height: 70%;
-
-        transform: rotate(-8deg);
-
-        opacity: 0.75;
+    .contact {
+        margin-top: 30px;
     }
 
+    .contact-title {
+        font-size: 9px;
+    }
+
+    .contact a {
+        font-size: 12px;
+    }
 
     .glass-zone {
+        right: -8vw;
+        top: 52vh;
 
-        right: -22%;
-
-        top: 47%;
-
-        width: 92%;
-
-        height: 58%;
-
-        opacity: 0.72;
-
-        backdrop-filter: blur(12px);
-
-        -webkit-backdrop-filter: blur(12px);
+        width: 72vw;
+        height: 54vh;
     }
-
-
-    /* Move temporary logo into the visual area */
 
     .logo {
+        right: 8vw;
+        top: auto;
+        bottom: 12vh;
 
-        right: 8%;
-
-        top: 76%;
-
-        transform: translateY(-50%);
-
-        z-index: 5;
-
-        opacity: 0.92;
+        width: clamp(125px, 35vw, 190px);
     }
-
-
-    .logo-top {
-
-        gap: 5px;
-    }
-
-
-    .logo-box {
-
-        width: 52px;
-
-        height: 52px;
-
-        font-size: 30px;
-    }
-
 
     .logo-bottom {
-
-        margin-top: 9px;
-
-        gap: 10px;
+        margin-top: 12px;
     }
-
 
     .logo-line {
-
-        height: 9px;
+        width: 55px;
+        height: 2px;
     }
 
-
     .logo-small {
-
-        width: 35px;
-
-        height: 9px;
+        width: 7px;
+        height: 7px;
     }
 }
 
 
-/* =========================================================
-   LANDSCAPE PHONES
-   ========================================================= */
+/* =========================
+   LANDSCAPE MOBILE
+========================= */
 
 @media (max-width: 900px) and (orientation: landscape) {
 
     .page {
-
-        min-height: 100svh;
-
-        overflow: hidden;
+        height: 100svh;
+        min-height: 420px;
     }
-
-
-    .content {
-
-        min-height: 100svh;
-
-        padding: 24px 6vw;
-
-        justify-content: space-between;
-    }
-
 
     .practice {
-
-        font-size: 9px;
-
-        letter-spacing: 0.14em;
-    }
-
-
-    .message {
-
-        margin-top: 0;
-
-        margin-bottom: 0;
-
-        max-width: 54%;
-    }
-
-
-    h1 {
-
-        margin-bottom: 16px;
-
-        font-size: clamp(38px, 7vw, 64px);
-
-        line-height: 0.9;
-    }
-
-
-    .intro {
-
-        max-width: 480px;
-
-        font-size: 14px;
-
-        line-height: 1.4;
-    }
-
-
-    .contact {
-
-        margin-top: 18px;
-
-        padding-top: 9px;
-
-        gap: 4px;
-    }
-
-
-    .contact-title {
+        left: 6vw;
+        top: 8vh;
 
         font-size: 8px;
-
-        margin-bottom: 2px;
     }
 
+    .message {
+        left: 6vw;
+        top: 52%;
 
-    .contact a {
+        width: 52vw;
+    }
+
+    .message h1 {
+        font-size: clamp(34px, 6vw, 58px);
+    }
+
+    .intro {
+        margin-top: 20px;
+
+        max-width: 48vw;
 
         font-size: 12px;
+        line-height: 1.5;
     }
 
-
-    .architecture {
-
-        right: -8%;
-
-        top: -12%;
-
-        width: 65%;
-
-        height: 125%;
-
-        transform: rotate(-7deg);
+    .contact {
+        margin-top: 22px;
     }
 
+    .contact a {
+        font-size: 11px;
+    }
 
     .glass-zone {
+        right: 3vw;
+        top: 6vh;
 
-        right: 2%;
-
-        top: 5%;
-
-        width: 48%;
-
-        height: 90%;
-
-        opacity: 0.82;
+        width: 38vw;
+        height: 88vh;
     }
-
 
     .logo {
+        right: 7vw;
+        top: 15vh;
 
-        right: 13%;
-
-        top: 50%;
-
-        transform: translateY(-50%);
-
-        z-index: 5;
-    }
-
-
-    .logo-top {
-
-        gap: 5px;
-    }
-
-
-    .logo-box {
-
-        width: 48px;
-
-        height: 48px;
-
-        font-size: 28px;
-    }
-
-
-    .logo-bottom {
-
-        margin-top: 9px;
-
-        gap: 10px;
-    }
-
-
-    .logo-line {
-
-        height: 8px;
-    }
-
-
-    .logo-small {
-
-        width: 34px;
-
-        height: 8px;
+        width: clamp(120px, 17vw, 190px);
     }
 }
 
 
-/* =========================================================
-   VERY SMALL PORTRAIT PHONES
-   ========================================================= */
+/* =========================
+   VERY SMALL PORTRAIT
+========================= */
 
-@media (max-width: 390px) and (orientation: portrait) {
+@media (max-width: 380px) and (orientation: portrait) {
 
-    .content {
-
-        padding-left: 6vw;
-
-        padding-right: 6vw;
+    .practice {
+        top: 6vh;
     }
-
 
     .message {
-
-        margin-top: 11vh;
+        top: 17vh;
     }
 
-
-    h1 {
-
-        font-size: 14vw;
-
-        margin-bottom: 20px;
+    .message h1 {
+        font-size: 37px;
     }
-
 
     .intro {
-
-        font-size: 15px;
+        margin-top: 20px;
+        font-size: 13px;
     }
-
 
     .contact {
-
-        margin-top: 24px;
+        margin-top: 25px;
     }
 
+    .glass-zone {
+        top: 55vh;
+    }
 
     .logo {
-
-        top: 78%;
+        bottom: 10vh;
+        width: 125px;
     }
 }
 
 </style>
-
 </head>
 
 
@@ -769,105 +485,63 @@ h1 {
 
 <div class="page">
 
-
     <div class="architecture"></div>
-
 
     <div class="glass-zone"></div>
 
 
-    <!-- Temporary MSI logo -->
+    <!-- Real MSI logo -->
 
     <div class="logo">
-
-        <div class="logo-top">
-
-            <div class="logo-box">M</div>
-            <div class="logo-box">S</div>
-            <div class="logo-box">I</div>
-
-        </div>
-
+        <img src="MSI 2025 Rebrand Logo.png" alt="MSI Architecture">
 
         <div class="logo-bottom">
-
             <div class="logo-line"></div>
-
             <div class="logo-small"></div>
+        </div>
+    </div>
+
+
+    <div class="practice">
+        Architecture&nbsp;&nbsp;·&nbsp;&nbsp;
+        Interior&nbsp;&nbsp;·&nbsp;&nbsp;
+        Planning
+    </div>
+
+
+    <div class="message">
+
+        <h1>
+            Something exciting<br>
+            is taking shape.
+        </h1>
+
+        <div class="intro">
+            Our new website is currently under development.
+            We're looking forward to sharing more about
+            MSI Architecture, our work and our approach to design.
+        </div>
+
+
+        <div class="contact">
+
+            <div class="contact-title">
+                Get in touch
+            </div>
+
+            <a href="mailto:info@msi-architecture.co.uk">
+                info@msi-architecture.co.uk
+            </a>
+
+            <a href="tel:+441617100855">
+                0161 710 0855
+            </a>
 
         </div>
 
     </div>
-
-
-    <div class="content">
-
-
-        <div class="practice">
-
-            Architecture&nbsp;&nbsp;·&nbsp;&nbsp;
-            Interior&nbsp;&nbsp;·&nbsp;&nbsp;
-            Planning
-
-        </div>
-
-
-        <div class="message">
-
-
-            <h1>
-
-                Something exciting<br>
-                is taking shape.
-
-            </h1>
-
-
-            <div class="intro">
-
-                Our new website is currently under development.
-                We're looking forward to sharing more about
-                MSI Architecture, our work and our approach to design.
-
-            </div>
-
-
-            <div class="contact">
-
-
-                <div class="contact-title">
-
-                    Get in touch
-
-                </div>
-
-
-                <a href="mailto:info@msi-architecture.co.uk">
-
-                    info@msi-architecture.co.uk
-
-                </a>
-
-
-                <a href="tel:+441617100855">
-
-                    0161 710 0855
-
-                </a>
-
-
-            </div>
-
-
-        </div>
-
-
-    </div>
-
 
 </div>
 
-
 </body>
-
 </html>
