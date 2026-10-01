@@ -27,7 +27,7 @@ body {
 
 /* =========================================================
    MAIN PAGE
-   ========================================================= */
+========================================================= */
 
 .page {
     position: fixed;
@@ -55,7 +55,7 @@ body {
 
 /* =========================================================
    ARCHITECTURAL BACKGROUND
-   ========================================================= */
+========================================================= */
 
 .page::before {
     content: "";
@@ -118,12 +118,14 @@ body {
 
 /* =========================================================
    TOP DESCRIPTOR WORDS
-   ========================================================= */
+========================================================= */
 
 .top-labels {
     position: absolute;
+
     top: 42px;
     left: 0;
+
     width: 100%;
 
     display: grid;
@@ -155,8 +157,7 @@ body {
 
 /* =========================================================
    FROSTED / RIBBED GLASS
-   Behind the MSI logo
-   ========================================================= */
+========================================================= */
 
 .glass {
     position: absolute;
@@ -192,8 +193,8 @@ body {
 
 
 /* =========================================================
-   MAIN LOGO
-   ========================================================= */
+   MAIN MSI LOGO
+========================================================= */
 
 .main-logo {
     position: absolute;
@@ -212,40 +213,98 @@ body {
 
 
 /* =========================================================
-   CONTACT DETAILS
-   ========================================================= */
+   MAIN MESSAGE
+========================================================= */
 
-.contact {
+.message {
     position: absolute;
 
-    left: 48px;
-    bottom: 42px;
+    left: 7vw;
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    width: min(620px, 48vw);
 
     z-index: 10;
+}
+
+.message h1 {
+    margin: 0;
+
+    font-size: clamp(48px, 5vw, 82px);
+
+    line-height: 0.98;
+
+    font-weight: 500;
+
+    letter-spacing: -0.045em;
+
+    color: #222;
+}
+
+.intro {
+    margin-top: 32px;
+
+    max-width: 510px;
+
+    font-size: 17px;
+
+    line-height: 1.65;
+
+    color: #555;
+}
+
+
+/* =========================================================
+   CONTACT DETAILS
+========================================================= */
+
+.contact {
+    margin-top: 48px;
 
     display: flex;
     flex-direction: column;
-    gap: 7px;
 
-    font-size: 12px;
-    letter-spacing: 0.04em;
+    align-items: flex-start;
+
+    gap: 6px;
 
     color: #333;
 }
 
+.contact-title {
+    margin-bottom: 6px;
+
+    font-size: 10px;
+
+    line-height: 1;
+
+    letter-spacing: 0.18em;
+
+    text-transform: uppercase;
+
+    color: #888;
+}
+
 .contact a {
-    color: inherit;
+    color: #222;
+
+    font-size: 14px;
+
     text-decoration: none;
+
+    border-bottom: 1px solid rgba(34,34,34,0.22);
 }
 
 .contact a:hover {
-    text-decoration: underline;
+    border-bottom-color: #222;
 }
 
 
 /* =========================================================
    INTRO SCREEN
-   ========================================================= */
+========================================================= */
 
 .intro-screen {
     position: fixed;
@@ -256,6 +315,7 @@ body {
     background: #fff;
 
     display: flex;
+
     align-items: center;
     justify-content: center;
 
@@ -268,7 +328,7 @@ body {
 
 /* =========================================================
    INTRO LOGO
-   ========================================================= */
+========================================================= */
 
 .intro-logo {
     position: relative;
@@ -283,7 +343,7 @@ body {
 }
 
 
-/* Actual logo */
+/* Actual intro logo */
 
 .intro-logo img {
     display: block;
@@ -292,15 +352,14 @@ body {
     height: auto;
 
     position: relative;
+
     z-index: 1;
 }
 
 
 /* =========================================================
    LOGO REVEAL MASKS
-   Two white panels initially cover the logo.
-   They move outward, revealing the logo from the centre.
-   ========================================================= */
+========================================================= */
 
 .logo-reveal-left,
 .logo-reveal-right {
@@ -341,8 +400,7 @@ body {
 
 /* =========================================================
    LOGO DISAPPEARANCE
-   A white bar begins at the centre and expands outward.
-   ========================================================= */
+========================================================= */
 
 .logo-conceal {
     position: absolute;
@@ -369,7 +427,7 @@ body {
 
 /* =========================================================
    LOGO ANIMATIONS
-   ========================================================= */
+========================================================= */
 
 @keyframes revealLeft {
 
@@ -395,7 +453,6 @@ body {
 
 }
 
-
 @keyframes concealLogo {
 
     0% {
@@ -411,29 +468,35 @@ body {
 
 /* =========================================================
    MAIN PAGE FORWARD MOTION
-   ========================================================= */
+========================================================= */
 
 @keyframes pageForward {
 
     0% {
         transform: scale(0.92);
+
         opacity: 0;
+
         filter: blur(5px);
     }
 
     35% {
         opacity: 0.55;
+
         filter: blur(2.5px);
     }
 
     70% {
         opacity: 0.88;
+
         filter: blur(0.8px);
     }
 
     100% {
         transform: scale(1);
+
         opacity: 1;
+
         filter: blur(0);
     }
 
@@ -442,7 +505,7 @@ body {
 
 /* =========================================================
    WHITE INTRO SLIDES AWAY
-   ========================================================= */
+========================================================= */
 
 @keyframes introSlideAway {
 
@@ -459,18 +522,18 @@ body {
 
 /* =========================================================
    LANDSCAPE
-   ========================================================= */
+========================================================= */
 
 @media (max-height: 600px) and (orientation: landscape) {
 
     .top-labels {
         top: 25px;
+
         padding: 0 32px;
     }
 
     .contact {
-        left: 32px;
-        bottom: 25px;
+        margin-top: 22px;
     }
 
     .main-logo {
@@ -488,8 +551,27 @@ body {
         height: 88vh;
     }
 
+    .message {
+        left: 6vw;
+
+        width: 52vw;
+    }
+
+    .message h1 {
+        font-size: clamp(34px, 6vw, 58px);
+    }
+
+    .intro {
+        max-width: 48vw;
+
+        font-size: 12px;
+
+        line-height: 1.5;
+    }
+
     .intro-logo {
         width: 50.4vw;
+
         max-width: 360px;
     }
 
@@ -498,7 +580,7 @@ body {
 
 /* =========================================================
    PORTRAIT / MOBILE
-   ========================================================= */
+========================================================= */
 
 @media (orientation: portrait) {
 
@@ -512,6 +594,7 @@ body {
         padding: 0 24px;
 
         font-size: 9px;
+
         letter-spacing: 0.14em;
     }
 
@@ -523,8 +606,47 @@ body {
         height: 54vh;
     }
 
+    .message {
+        left: 8vw;
+
+        top: 19vh;
+
+        transform: none;
+
+        width: 84vw;
+    }
+
+    .message h1 {
+        font-size: clamp(38px, 11vw, 58px);
+
+        line-height: 0.98;
+    }
+
+    .intro {
+        margin-top: 24px;
+
+        max-width: 82vw;
+
+        font-size: 14px;
+
+        line-height: 1.55;
+    }
+
+    .contact {
+        margin-top: 30px;
+    }
+
+    .contact-title {
+        font-size: 9px;
+    }
+
+    .contact a {
+        font-size: 12px;
+    }
+
     .main-logo {
         left: 50%;
+
         top: 79vh;
 
         transform: translate(-50%, -50%);
@@ -532,15 +654,9 @@ body {
         width: clamp(270px, 72vw, 390px);
     }
 
-    .contact {
-        left: 24px;
-        bottom: 28px;
-
-        font-size: 11px;
-    }
-
     .intro-logo {
         width: 81.6vw;
+
         max-width: 396px;
     }
 
@@ -549,7 +665,7 @@ body {
 
 /* =========================================================
    VERY SMALL MOBILE
-   ========================================================= */
+========================================================= */
 
 @media (max-width: 380px) and (orientation: portrait) {
 
@@ -559,20 +675,34 @@ body {
         font-size: 8px;
     }
 
-    .main-logo {
-        top: 79vh;
-        bottom: auto;
+    .message {
+        top: 17vh;
+    }
 
-        width: 270px;
+    .message h1 {
+        font-size: 37px;
+    }
+
+    .intro {
+        margin-top: 20px;
+
+        font-size: 13px;
+    }
+
+    .contact {
+        margin-top: 25px;
     }
 
     .glass {
         top: 55vh;
     }
 
-    .contact {
-        left: 18px;
-        bottom: 22px;
+    .main-logo {
+        top: 79vh;
+
+        bottom: auto;
+
+        width: 270px;
     }
 
     .intro-logo {
@@ -584,7 +714,7 @@ body {
 
 /* =========================================================
    ACCESSIBILITY
-   ========================================================= */
+========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
 
@@ -594,8 +724,11 @@ body {
 
     .page {
         transform: none;
+
         opacity: 1;
+
         filter: none;
+
         animation: none;
     }
 
@@ -610,7 +743,7 @@ body {
 
 <!-- =======================================================
      MAIN PAGE
-     ======================================================= -->
+======================================================= -->
 
 <div class="page">
 
@@ -642,17 +775,42 @@ body {
     >
 
 
-    <!-- Contact -->
+    <!-- Main website message -->
 
-    <div class="contact">
+    <div class="message">
 
-        <a href="mailto:info@msi-architecture.co.uk">
-            info@msi-architecture.co.uk
-        </a>
+        <h1>
+            Something exciting<br>
+            is taking shape.
+        </h1>
 
-        <a href="tel:01617100855">
-            0161 710 0855
-        </a>
+
+        <div class="intro">
+
+            Our new website is currently under development.
+            We're looking forward to sharing more about
+            MSI Architecture, our work and our approach to design.
+
+        </div>
+
+
+        <!-- Contact -->
+
+        <div class="contact">
+
+            <div class="contact-title">
+                Get in touch
+            </div>
+
+            <a href="mailto:info@msi-architecture.co.uk">
+                info@msi-architecture.co.uk
+            </a>
+
+            <a href="tel:+441617100855">
+                0161 710 0855
+            </a>
+
+        </div>
 
     </div>
 
@@ -662,7 +820,7 @@ body {
 
 <!-- =======================================================
      OPENING INTRO
-     ======================================================= -->
+======================================================= -->
 
 <div class="intro-screen">
 
