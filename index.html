@@ -29,6 +29,89 @@ body {
 
 
 /* =========================
+   INTRO SCREEN
+========================= */
+
+.intro-screen {
+    position: fixed;
+    inset: 0;
+
+    z-index: 100;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #ffffff;
+
+    animation:
+        introFadeOut 1.2s cubic-bezier(.77,0,.18,1) 2.15s forwards;
+
+    pointer-events: none;
+}
+
+.intro-logo {
+    width: clamp(220px, 28vw, 420px);
+
+    opacity: 0;
+
+    animation:
+        logoAppear 1.1s cubic-bezier(.22,1,.36,1) 0.25s forwards,
+        logoDisappear 0.9s ease 1.55s forwards;
+}
+
+.intro-logo img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+
+/* =========================
+   INTRO ANIMATION
+========================= */
+
+@keyframes logoAppear {
+
+    0% {
+        opacity: 0;
+        transform: scale(0.94);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes logoDisappear {
+
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(1.025);
+    }
+}
+
+@keyframes introFadeOut {
+
+    0% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+}
+
+
+/* =========================
    MAIN PAGE
 ========================= */
 
@@ -46,6 +129,24 @@ body {
             rgba(247,247,245,0.98) 52%,
             rgba(238,238,235,0.98) 100%
         );
+
+    opacity: 0;
+
+    animation:
+        pageReveal 1.3s cubic-bezier(.77,0,.18,1) 2.05s forwards;
+}
+
+@keyframes pageReveal {
+
+    0% {
+        opacity: 0;
+        clip-path: inset(0 100% 0 0);
+    }
+
+    100% {
+        opacity: 1;
+        clip-path: inset(0 0 0 0);
+    }
 }
 
 
@@ -289,6 +390,11 @@ body {
         min-height: 560px;
     }
 
+    .intro-logo {
+        width: 68vw;
+        max-width: 330px;
+    }
+
     .practice {
         left: 0;
         right: 0;
@@ -363,6 +469,11 @@ body {
     .page {
         height: 100svh;
         min-height: 420px;
+    }
+
+    .intro-logo {
+        width: 42vw;
+        max-width: 300px;
     }
 
     .practice {
@@ -464,6 +575,30 @@ body {
 
         transform: translate(-50%, -50%);
     }
+
+}
+
+
+/* =========================
+   REDUCED MOTION
+========================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .intro-screen,
+    .intro-logo,
+    .page {
+        animation: none;
+    }
+
+    .intro-screen {
+        display: none;
+    }
+
+    .page {
+        opacity: 1;
+        clip-path: none;
+    }
 }
 
 </style>
@@ -471,6 +606,29 @@ body {
 
 
 <body>
+
+
+<!-- =========================
+     INTRO LOGO
+========================= -->
+
+<div class="intro-screen">
+
+    <div class="intro-logo">
+
+        <img
+            src="MSI 2025 Rebrand Logo.png"
+            alt="MSI Architecture"
+        >
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     MAIN PAGE
+========================= -->
 
 <div class="page">
 
@@ -482,14 +640,23 @@ body {
     <!-- MSI Architecture logo -->
 
     <div class="logo">
-        <img src="MSI 2025 Rebrand Logo.png" alt="MSI Architecture">
+
+        <img
+            src="MSI 2025 Rebrand Logo.png"
+            alt="MSI Architecture"
+        >
+
     </div>
 
 
     <div class="practice">
+
         <span>Architecture</span>
+
         <span>Interiors</span>
+
         <span>Planning</span>
+
     </div>
 
 
@@ -501,9 +668,11 @@ body {
         </h1>
 
         <div class="intro">
+
             Our new website is currently under development.
             We're looking forward to sharing more about
             MSI Architecture, our work and our approach to design.
+
         </div>
 
 
@@ -526,6 +695,7 @@ body {
     </div>
 
 </div>
+
 
 </body>
 </html>
