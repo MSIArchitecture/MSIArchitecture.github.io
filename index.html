@@ -38,6 +38,7 @@ body {
     height: 100vh;
     min-height: 600px;
     overflow: hidden;
+
     background:
         linear-gradient(
             135deg,
@@ -143,52 +144,33 @@ body {
 
 
 /* =========================
-   LOGO
+   REAL MSI LOGO
 ========================= */
 
 .logo {
     position: absolute;
 
-    right: 7vw;
-    top: 12vh;
+    /*
+       Desktop:
+       large logo positioned in the open space
+       to the right of the main text.
+    */
 
-    width: clamp(160px, 16vw, 270px);
+    left: 72vw;
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+
+    width: clamp(330px, 34vw, 520px);
 
     z-index: 6;
 }
 
 .logo img {
     display: block;
+
     width: 100%;
     height: auto;
-}
-
-
-/* =========================
-   LOGO BASE
-========================= */
-
-.logo-bottom {
-    display: flex;
-    align-items: center;
-
-    margin-top: 18px;
-}
-
-.logo-line {
-    height: 3px;
-    width: 85px;
-
-    background: #080808;
-}
-
-.logo-small {
-    width: 9px;
-    height: 9px;
-
-    margin-left: 8px;
-
-    background: #080808;
 }
 
 
@@ -353,26 +335,21 @@ body {
         height: 54vh;
     }
 
+    /*
+       Portrait:
+       logo centred horizontally and placed
+       in the lower area between the contact
+       details and the bottom of the screen.
+    */
+
     .logo {
-        right: 8vw;
+        left: 50%;
         top: auto;
-        bottom: 12vh;
+        bottom: 7vh;
 
-        width: clamp(125px, 35vw, 190px);
-    }
+        transform: translateX(-50%);
 
-    .logo-bottom {
-        margin-top: 12px;
-    }
-
-    .logo-line {
-        width: 55px;
-        height: 2px;
-    }
-
-    .logo-small {
-        width: 7px;
-        height: 7px;
+        width: clamp(270px, 72vw, 390px);
     }
 }
 
@@ -431,11 +408,19 @@ body {
         height: 88vh;
     }
 
-    .logo {
-        right: 7vw;
-        top: 15vh;
+    /*
+       Landscape:
+       same enlarged, vertically centred treatment
+       as desktop.
+    */
 
-        width: clamp(120px, 17vw, 190px);
+    .logo {
+        left: 75%;
+        top: 50%;
+
+        transform: translate(-50%, -50%);
+
+        width: clamp(230px, 34vw, 360px);
     }
 }
 
@@ -472,8 +457,9 @@ body {
     }
 
     .logo {
-        bottom: 10vh;
-        width: 125px;
+        bottom: 5vh;
+
+        width: 270px;
     }
 }
 
@@ -490,15 +476,10 @@ body {
     <div class="glass-zone"></div>
 
 
-    <!-- Real MSI logo -->
+    <!-- MSI Architecture logo -->
 
     <div class="logo">
         <img src="MSI 2025 Rebrand Logo.png" alt="MSI Architecture">
-
-        <div class="logo-bottom">
-            <div class="logo-line"></div>
-            <div class="logo-small"></div>
-        </div>
     </div>
 
 
