@@ -52,7 +52,9 @@ body {
 
 
 /* =========================
-   BESPOKE MSI LOGO REVEAL
+   MSI LOGO INTRO
+   Same directional language
+   as the main page reveal
 ========================= */
 
 .intro-logo {
@@ -62,11 +64,11 @@ body {
 
     opacity: 0;
 
-    clip-path: inset(0 50% 0 50%);
+    clip-path: inset(0 100% 0 0);
 
     animation:
-        logoReveal 1.15s cubic-bezier(.77,0,.18,1) 0.25s forwards,
-        logoConceal 0.95s cubic-bezier(.77,0,.18,1) 1.55s forwards;
+        logoReveal 1.3s cubic-bezier(.77,0,.18,1) 0.25s forwards,
+        logoConceal 0.8s cubic-bezier(.77,0,.18,1) 1.55s forwards;
 }
 
 .intro-logo img {
@@ -78,31 +80,31 @@ body {
 
 
 /* =========================
-   LOGO REVEALS FROM CENTRE
+   LOGO REVEALS
+   LEFT → RIGHT
 ========================= */
 
 @keyframes logoReveal {
 
     0% {
         opacity: 0;
-        clip-path: inset(0 50% 0 50%);
-        transform: scale(0.985);
+        clip-path: inset(0 100% 0 0);
     }
 
-    20% {
+    15% {
         opacity: 1;
     }
 
     100% {
         opacity: 1;
         clip-path: inset(0 0 0 0);
-        transform: scale(1);
     }
 }
 
 
 /* =========================
-   LOGO DISAPPEARS FROM CENTRE
+   LOGO DISAPPEARS
+   LEFT → RIGHT
 ========================= */
 
 @keyframes logoConceal {
@@ -110,13 +112,11 @@ body {
     0% {
         opacity: 1;
         clip-path: inset(0 0 0 0);
-        transform: scale(1);
     }
 
     100% {
         opacity: 0;
-        clip-path: inset(0 50% 0 50%);
-        transform: scale(0.985);
+        clip-path: inset(0 0 0 100%);
     }
 }
 
