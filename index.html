@@ -53,7 +53,7 @@ body {
 
 
 /* =========================
-   BESPOKE MSI LOGO REVEAL
+   INTRO LOGO
 ========================= */
 
 .intro-logo {
@@ -61,84 +61,131 @@ body {
 
     width: clamp(264px, 33.6vw, 504px);
 
-    opacity: 0;
+    opacity: 1;
 
-    /*
-       The logo is revealed from the centre outward.
-       The concealment uses an additional centre mask
-       so the logo disappears from the middle outward.
-    */
-
-    animation:
-        logoReveal 1.35s cubic-bezier(.77,0,.18,1) 0.25s forwards,
-        logoConceal 1.15s cubic-bezier(.77,0,.18,1) 1.55s forwards;
+    overflow: hidden;
 }
+
+
+/* =========================
+   INTRO LOGO IMAGE
+========================= */
 
 .intro-logo img {
     display: block;
 
     width: 100%;
     height: auto;
-
-    /*
-       Keep the image itself intact.
-       The parent controls the reveal/conceal.
-    */
 }
 
 
 /* =========================
-   LOGO REVEALS FROM CENTRE
+   CENTRE-OUTWARD MASKS
 ========================= */
 
-@keyframes logoReveal {
+.intro-logo::before,
+.intro-logo::after {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    bottom: 0;
+
+    width: 50%;
+
+    background: #ffffff;
+
+    z-index: 2;
+}
+
+
+/* Left mask */
+
+.intro-logo::before {
+    left: 0;
+
+    animation:
+        logoRevealLeft 1.35s cubic-bezier(.77,0,.18,1) 0.25s forwards,
+        logoConcealLeft 1.15s cubic-bezier(.77,0,.18,1) 1.55s forwards;
+}
+
+
+/* Right mask */
+
+.intro-logo::after {
+    right: 0;
+
+    animation:
+        logoRevealRight 1.35s cubic-bezier(.77,0,.18,1) 0.25s forwards,
+        logoConcealRight 1.15s cubic-bezier(.77,0,.18,1) 1.55s forwards;
+}
+
+
+/* =========================
+   LOGO REVEAL — LEFT
+   MOVES FROM CENTRE OUT
+========================= */
+
+@keyframes logoRevealLeft {
 
     0% {
-        opacity: 0;
-        clip-path: inset(0 50% 0 50%);
-        transform: scale(0.985);
-    }
-
-    20% {
-        opacity: 1;
+        width: 50%;
     }
 
     100% {
-        opacity: 1;
-        clip-path: inset(0 0 0 0);
-        transform: scale(1);
+        width: 0%;
     }
 }
 
 
 /* =========================
-   LOGO DISAPPEARS FROM CENTRE
+   LOGO REVEAL — RIGHT
+   MOVES FROM CENTRE OUT
 ========================= */
 
-@keyframes logoConceal {
+@keyframes logoRevealRight {
 
     0% {
-        opacity: 1;
-        clip-path: inset(0 0 0 0);
-        transform: scale(1);
-    }
-
-    45% {
-        opacity: 1;
-        clip-path: inset(0 18% 0 18%);
-        transform: scale(1);
-    }
-
-    75% {
-        opacity: 1;
-        clip-path: inset(0 38% 0 38%);
-        transform: scale(0.995);
+        width: 50%;
     }
 
     100% {
-        opacity: 0;
-        clip-path: inset(0 50% 0 50%);
-        transform: scale(0.985);
+        width: 0%;
+    }
+}
+
+
+/* =========================
+   LOGO CONCEAL — LEFT
+   STARTS AT CENTRE
+========================= */
+
+@keyframes logoConcealLeft {
+
+    0% {
+        width: 0%;
+    }
+
+    100% {
+        width: 50%;
+    }
+}
+
+
+/* =========================
+   LOGO CONCEAL — RIGHT
+   STARTS AT CENTRE
+========================= */
+
+@keyframes logoConcealRight {
+
+    0% {
+        width: 0%;
+    }
+
+    100% {
+        width: 50%;
     }
 }
 
@@ -642,6 +689,8 @@ body {
 
     .intro-screen,
     .intro-logo,
+    .intro-logo::before,
+    .intro-logo::after,
     .page {
         animation: none;
     }
@@ -650,5 +699,108 @@ body {
         display: none;
     }
 
-    .pa
+    .page {
+        opacity: 1;
+        clip-path: none;
+    }
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     INTRO LOGO
+========================= -->
+
+<div class="intro-screen">
+
+    <div class="intro-logo">
+
+        <img
+            src="MSI 2025 Rebrand Logo.png"
+            alt="MSI Architecture"
+        >
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     MAIN PAGE
+========================= -->
+
+<div class="page">
+
+    <div class="architecture"></div>
+
+    <div class="glass-zone"></div>
+
+
+    <!-- MSI Architecture logo -->
+
+    <div class="logo">
+
+        <img
+            src="MSI 2025 Rebrand Logo.png"
+            alt="MSI Architecture"
+        >
+
+    </div>
+
+
+    <div class="practice">
+
+        <span>Architecture</span>
+
+        <span>Interiors</span>
+
+        <span>Planning</span>
+
+    </div>
+
+
+    <div class="message">
+
+        <h1>
+            Something exciting<br>
+            is taking shape.
+        </h1>
+
+        <div class="intro">
+
+            Our new website is currently under development.
+            We're looking forward to sharing more about
+            MSI Architecture, our work and our approach to design.
+
+        </div>
+
+
+        <div class="contact">
+
+            <div class="contact-title">
+                Get in touch
+            </div>
+
+            <a href="mailto:info@msi-architecture.co.uk">
+                info@msi-architecture.co.uk
+            </a>
+
+            <a href="tel:+441617100855">
+                0161 710 0855
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+</body>
+</html>
 ```
