@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,9 +28,9 @@ body {
 }
 
 
-/* =========================================================
+/* =========================
    INTRO SCREEN
-   ========================================================= */
+========================= */
 
 .intro-screen {
     position: fixed;
@@ -39,192 +38,89 @@ body {
 
     z-index: 100;
 
-    background: #ffffff;
-
     display: flex;
     align-items: center;
     justify-content: center;
 
-    overflow: hidden;
+    background: #ffffff;
 
-    /*
-       The intro remains over the main page while the main
-       page begins its own reveal underneath.
-    */
     animation:
-        introSlideAway 1.25s cubic-bezier(.77,0,.175,1) 2.45s forwards;
+        introFadeOut 1.2s cubic-bezier(.77,0,.18,1) 2.15s forwards;
+
+    pointer-events: none;
 }
 
-
-/* =========================================================
-   INTRO LOGO
-   ========================================================= */
-
 .intro-logo {
-    position: relative;
+    width: clamp(330px, 42vw, 630px);
 
-    width: clamp(264px, 33.6vw, 504px);
+    opacity: 0;
 
-    height: auto;
-
-    display: block;
-
-    overflow: visible;
+    animation:
+        logoAppear 1.1s cubic-bezier(.22,1,.36,1) 0.25s forwards,
+        logoDisappear 0.9s ease 1.55s forwards;
 }
 
 .intro-logo img {
     display: block;
-
     width: 100%;
     height: auto;
-
-    position: relative;
-
-    z-index: 1;
 }
 
 
-/* =========================================================
-   INTRO LOGO — CENTRE OUT REVEAL
-   ========================================================= */
-
-.logo-reveal-left,
-.logo-reveal-right {
-    position: absolute;
-
-    top: 0;
-
-    width: 50%;
-    height: 100%;
-
-    background: #ffffff;
-
-    z-index: 3;
-
-    pointer-events: none;
-}
-
-.logo-reveal-left {
-    left: 0;
-
-    transform: translateX(0);
-
-    animation:
-        revealLeft
-        1s
-        cubic-bezier(.77,0,.175,1)
-        .25s
-        forwards;
-}
-
-.logo-reveal-right {
-    right: 0;
-
-    transform: translateX(0);
-
-    animation:
-        revealRight
-        1s
-        cubic-bezier(.77,0,.175,1)
-        .25s
-        forwards;
-}
-
-
-/* =========================================================
-   INTRO LOGO — CENTRE OUT DISAPPEAR
-   ========================================================= */
-
-.logo-conceal {
-    position: absolute;
-
-    left: 50%;
-    top: 0;
-
-    width: 0;
-    height: 100%;
-
-    background: #ffffff;
-
-    transform: translateX(-50%);
-
-    z-index: 5;
-
-    pointer-events: none;
-
-    animation:
-        concealLogo
-        .9s
-        cubic-bezier(.77,0,.175,1)
-        1.55s
-        forwards;
-}
-
-
-/* =========================================================
+/* =========================
    INTRO ANIMATION
-   ========================================================= */
+========================= */
 
-@keyframes revealLeft {
+@keyframes logoAppear {
 
     0% {
+        opacity: 0;
+        transform: scale(0.94);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes logoDisappear {
+
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(1.025);
+    }
+}
+
+@keyframes introFadeOut {
+
+    0% {
+        opacity: 1;
         transform: translateX(0);
     }
 
     100% {
-        transform: translateX(-105%);
-    }
-}
-
-@keyframes revealRight {
-
-    0% {
-        transform: translateX(0);
-    }
-
-    100% {
-        transform: translateX(105%);
-    }
-}
-
-@keyframes concealLogo {
-
-    0% {
-        width: 0;
-    }
-
-    100% {
-        width: 110%;
-    }
-}
-
-@keyframes introSlideAway {
-
-    0% {
-        transform: translateX(0);
-    }
-
-    100% {
+        opacity: 0;
         transform: translateX(-100%);
     }
 }
 
 
-/* =========================================================
+/* =========================
    MAIN PAGE
-   ========================================================= */
+========================= */
 
 .page {
     position: relative;
-
     width: 100vw;
     height: 100vh;
-
     min-height: 600px;
-
     overflow: hidden;
-
-    isolation: isolate;
 
     background:
         linear-gradient(
@@ -236,59 +132,37 @@ body {
 
     opacity: 0;
 
-    /*
-       This is the main-page transition from your supplied
-       version: a left-to-right clip-path reveal.
-
-       It starts underneath the intro so the two transitions
-       overlap naturally.
-    */
     animation:
-        pageReveal
-        1.3s
-        cubic-bezier(.77,0,.18,1)
-        2.05s
-        forwards;
+        pageReveal 1.3s cubic-bezier(.77,0,.18,1) 2.05s forwards;
 }
-
 
 @keyframes pageReveal {
 
     0% {
         opacity: 0;
-
-        clip-path: inset(
-            0 100% 0 0
-        );
+        clip-path: inset(0 100% 0 0);
     }
 
     100% {
         opacity: 1;
-
-        clip-path: inset(
-            0 0 0 0
-        );
+        clip-path: inset(0 0 0 0);
     }
 }
 
 
-/* =========================================================
+/* =========================
    ARCHITECTURAL BACKGROUND
-   ========================================================= */
+========================= */
 
 .architecture {
     position: absolute;
-
     inset: 0;
-
     overflow: hidden;
-
     z-index: 1;
 }
 
 .architecture::before {
     content: "";
-
     position: absolute;
 
     width: 58vw;
@@ -313,7 +187,6 @@ body {
 
 .architecture::after {
     content: "";
-
     position: absolute;
 
     width: 42vw;
@@ -336,9 +209,9 @@ body {
 }
 
 
-/* =========================================================
-   FROSTED / RIBBED GLASS
-   ========================================================= */
+/* =========================
+   FROSTED GLASS
+========================= */
 
 .glass-zone {
     position: absolute;
@@ -362,23 +235,18 @@ body {
 
     backdrop-filter: blur(4px);
 
-    border-left:
-        1px solid rgba(255,255,255,0.8);
-
-    border-right:
-        1px solid rgba(255,255,255,0.65);
+    border-left: 1px solid rgba(255,255,255,0.8);
+    border-right: 1px solid rgba(255,255,255,0.65);
 
     box-shadow:
         -30px 0 80px rgba(0,0,0,0.045),
         30px 0 80px rgba(255,255,255,0.4);
-
-    pointer-events: none;
 }
 
 
-/* =========================================================
+/* =========================
    REAL MSI LOGO
-   ========================================================= */
+========================= */
 
 .logo {
     position: absolute;
@@ -386,11 +254,9 @@ body {
     left: 72vw;
     top: 50%;
 
-    transform:
-        translate(-50%, -50%);
+    transform: translate(-50%, -50%);
 
-    width:
-        clamp(330px, 34vw, 520px);
+    width: clamp(330px, 34vw, 520px);
 
     z-index: 6;
 }
@@ -403,9 +269,9 @@ body {
 }
 
 
-/* =========================================================
+/* =========================
    PRACTICE TYPE
-   ========================================================= */
+========================= */
 
 .practice {
     position: absolute;
@@ -417,16 +283,13 @@ body {
     z-index: 6;
 
     display: flex;
-
     justify-content: space-between;
     align-items: center;
 
     padding: 0 7vw;
 
     font-size: 11px;
-
     letter-spacing: 0.18em;
-
     text-transform: uppercase;
 
     color: #555;
@@ -437,9 +300,9 @@ body {
 }
 
 
-/* =========================================================
+/* =========================
    MAIN MESSAGE
-   ========================================================= */
+========================= */
 
 .message {
     position: absolute;
@@ -447,11 +310,9 @@ body {
     left: 7vw;
     top: 50%;
 
-    transform:
-        translateY(-50%);
+    transform: translateY(-50%);
 
-    width:
-        min(620px, 48vw);
+    width: min(620px, 48vw);
 
     z-index: 6;
 }
@@ -459,13 +320,9 @@ body {
 .message h1 {
     margin: 0;
 
-    font-size:
-        clamp(48px, 5vw, 82px);
-
+    font-size: clamp(48px, 5vw, 82px);
     line-height: 0.98;
-
     font-weight: 500;
-
     letter-spacing: -0.045em;
 
     color: #222;
@@ -477,7 +334,6 @@ body {
     max-width: 510px;
 
     font-size: 17px;
-
     line-height: 1.65;
 
     color: #555;
@@ -487,9 +343,7 @@ body {
     margin-top: 48px;
 
     display: flex;
-
     flex-direction: column;
-
     align-items: flex-start;
 
     gap: 6px;
@@ -499,11 +353,8 @@ body {
     margin-bottom: 6px;
 
     font-size: 10px;
-
     line-height: 1;
-
     letter-spacing: 0.18em;
-
     text-transform: uppercase;
 
     color: #888;
@@ -516,8 +367,7 @@ body {
 
     text-decoration: none;
 
-    border-bottom:
-        1px solid rgba(34,34,34,0.22);
+    border-bottom: 1px solid rgba(34,34,34,0.22);
 }
 
 .contact a:hover {
@@ -525,9 +375,9 @@ body {
 }
 
 
-/* =========================================================
+/* =========================
    PORTRAIT MOBILE
-   ========================================================= */
+========================= */
 
 @media (max-width: 700px) and (orientation: portrait) {
 
@@ -537,32 +387,27 @@ body {
 
     .page {
         height: 100svh;
-
         min-height: 560px;
     }
 
     .intro-logo {
-        width: 81.6vw;
-
-        max-width: 396px;
+        width: 102vw;
+        max-width: 495px;
     }
 
     .practice {
         left: 0;
         right: 0;
-
         top: 3vh;
 
         padding: 0 8vw;
 
         font-size: 8px;
-
         letter-spacing: 0.15em;
     }
 
     .message {
         left: 8vw;
-
         top: 19vh;
 
         transform: none;
@@ -571,9 +416,7 @@ body {
     }
 
     .message h1 {
-        font-size:
-            clamp(38px, 11vw, 58px);
-
+        font-size: clamp(38px, 11vw, 58px);
         line-height: 0.98;
     }
 
@@ -583,7 +426,6 @@ body {
         max-width: 82vw;
 
         font-size: 14px;
-
         line-height: 1.55;
     }
 
@@ -601,70 +443,59 @@ body {
 
     .glass-zone {
         right: -8vw;
-
         top: 52vh;
 
         width: 72vw;
-
         height: 54vh;
     }
 
     .logo {
         left: 50%;
-
         top: 79vh;
 
-        transform:
-            translate(-50%, -50%);
+        transform: translate(-50%, -50%);
 
-        width:
-            clamp(270px, 72vw, 390px);
+        width: clamp(270px, 72vw, 390px);
     }
 }
 
 
-/* =========================================================
+/* =========================
    LANDSCAPE MOBILE
-   ========================================================= */
+========================= */
 
 @media (max-width: 900px) and (orientation: landscape) {
 
     .page {
         height: 100svh;
-
         min-height: 420px;
     }
 
     .intro-logo {
-        width: 50.4vw;
-
-        max-width: 360px;
+        width: 63vw;
+        max-width: 450px;
     }
 
     .practice {
         left: 0;
         right: 0;
-
         top: 4vh;
 
         padding: 0 6vw;
 
         font-size: 8px;
-
         letter-spacing: 0.15em;
     }
 
     .message {
         left: 6vw;
-
         top: 52%;
 
         width: 52vw;
     }
 
     .message h1 {
-        font-size:
-            clamp(34px, 6vw, 58px);
+        font-size: clamp(34px, 6vw, 58px);
     }
 
     .intro {
@@ -673,7 +504,6 @@ body {
         max-width: 48vw;
 
         font-size: 12px;
-
         line-height: 1.5;
     }
 
@@ -687,31 +517,26 @@ body {
 
     .glass-zone {
         right: 3vw;
-
         top: 6vh;
 
         width: 38vw;
-
         height: 88vh;
     }
 
     .logo {
         left: 75%;
-
         top: 50%;
 
-        transform:
-            translate(-50%, -50%);
+        transform: translate(-50%, -50%);
 
-        width:
-            clamp(230px, 34vw, 360px);
+        width: clamp(230px, 34vw, 360px);
     }
 }
 
 
-/* =========================================================
+/* =========================
    VERY SMALL PORTRAIT
-   ========================================================= */
+========================= */
 
 @media (max-width: 380px) and (orientation: portrait) {
 
@@ -731,7 +556,6 @@ body {
 
     .intro {
         margin-top: 20px;
-
         font-size: 13px;
     }
 
@@ -745,36 +569,34 @@ body {
 
     .logo {
         top: 79vh;
-
         bottom: auto;
 
         width: 270px;
 
-        transform:
-            translate(-50%, -50%);
+        transform: translate(-50%, -50%);
     }
 
-    .intro-logo {
-        width: 270px;
-    }
 }
 
 
-/* =========================================================
+/* =========================
    REDUCED MOTION
-   ========================================================= */
+========================= */
 
 @media (prefers-reduced-motion: reduce) {
+
+    .intro-screen,
+    .intro-logo,
+    .page {
+        animation: none;
+    }
 
     .intro-screen {
         display: none;
     }
 
     .page {
-        animation: none;
-
         opacity: 1;
-
         clip-path: none;
     }
 }
@@ -786,9 +608,9 @@ body {
 <body>
 
 
-<!-- =======================================================
-     INTRO SCREEN
-     ======================================================= -->
+<!-- =========================
+     INTRO LOGO
+========================= -->
 
 <div class="intro-screen">
 
@@ -799,34 +621,18 @@ body {
             alt="MSI Architecture"
         >
 
-        <!-- Centre-out logo reveal -->
-
-        <div class="logo-reveal-left"></div>
-
-        <div class="logo-reveal-right"></div>
-
-        <!-- Centre-out logo disappearance -->
-
-        <div class="logo-conceal"></div>
-
     </div>
 
 </div>
 
 
-<!-- =======================================================
+<!-- =========================
      MAIN PAGE
-     ======================================================= -->
+========================= -->
 
 <div class="page">
 
-
-    <!-- Architectural background -->
-
     <div class="architecture"></div>
-
-
-    <!-- Frosted / ribbed glass -->
 
     <div class="glass-zone"></div>
 
@@ -843,8 +649,6 @@ body {
     </div>
 
 
-    <!-- Practice disciplines -->
-
     <div class="practice">
 
         <span>Architecture</span>
@@ -856,15 +660,12 @@ body {
     </div>
 
 
-    <!-- Main message -->
-
     <div class="message">
 
         <h1>
             Something exciting<br>
             is taking shape.
         </h1>
-
 
         <div class="intro">
 
@@ -874,8 +675,6 @@ body {
 
         </div>
 
-
-        <!-- Contact -->
 
         <div class="contact">
 
@@ -895,10 +694,8 @@ body {
 
     </div>
 
-
 </div>
 
 
 </body>
 </html>
-```
