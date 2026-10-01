@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,6 +35,10 @@ body {
     inset: 0;
     overflow: hidden;
 
+    /* IMPORTANT:
+       Keeps background layers behind page content */
+    isolation: isolate;
+
     background:
         linear-gradient(
             115deg,
@@ -62,6 +67,8 @@ body {
     position: absolute;
     inset: -15%;
 
+    z-index: 0;
+
     background:
         linear-gradient(
             110deg,
@@ -81,6 +88,7 @@ body {
         );
 
     transform: rotate(-2deg);
+
     pointer-events: none;
 }
 
@@ -96,6 +104,8 @@ body {
 
     right: -15vw;
     top: -10vh;
+
+    z-index: 0;
 
     background:
         linear-gradient(
@@ -139,7 +149,7 @@ body {
 
     color: #333;
 
-    z-index: 10;
+    z-index: 20;
 }
 
 .top-labels span:nth-child(1) {
@@ -168,7 +178,7 @@ body {
     width: 31vw;
     height: 86vh;
 
-    z-index: 2;
+    z-index: 5;
 
     background:
         repeating-linear-gradient(
@@ -208,12 +218,12 @@ body {
 
     height: auto;
 
-    z-index: 8;
+    z-index: 15;
 }
 
 
 /* =========================================================
-   MAIN MESSAGE
+   MAIN WEBSITE MESSAGE
 ========================================================= */
 
 .message {
@@ -226,7 +236,11 @@ body {
 
     width: min(620px, 48vw);
 
-    z-index: 10;
+    z-index: 20;
+
+    display: block;
+
+    visibility: visible;
 }
 
 .message h1 {
@@ -257,7 +271,7 @@ body {
 
 
 /* =========================================================
-   CONTACT DETAILS
+   CONTACT
 ========================================================= */
 
 .contact {
@@ -270,7 +284,7 @@ body {
 
     gap: 6px;
 
-    color: #333;
+    z-index: 20;
 }
 
 .contact-title {
@@ -342,9 +356,6 @@ body {
     overflow: visible;
 }
 
-
-/* Actual intro logo */
-
 .intro-logo img {
     display: block;
 
@@ -358,7 +369,7 @@ body {
 
 
 /* =========================================================
-   LOGO REVEAL MASKS
+   INTRO LOGO REVEAL
 ========================================================= */
 
 .logo-reveal-left,
@@ -399,7 +410,7 @@ body {
 
 
 /* =========================================================
-   LOGO DISAPPEARANCE
+   INTRO LOGO DISAPPEARANCE
 ========================================================= */
 
 .logo-conceal {
@@ -474,29 +485,23 @@ body {
 
     0% {
         transform: scale(0.92);
-
         opacity: 0;
-
         filter: blur(5px);
     }
 
     35% {
         opacity: 0.55;
-
         filter: blur(2.5px);
     }
 
     70% {
         opacity: 0.88;
-
         filter: blur(0.8px);
     }
 
     100% {
         transform: scale(1);
-
         opacity: 1;
-
         filter: blur(0);
     }
 
@@ -504,7 +509,7 @@ body {
 
 
 /* =========================================================
-   WHITE INTRO SLIDES AWAY
+   INTRO SLIDES AWAY
 ========================================================= */
 
 @keyframes introSlideAway {
@@ -528,12 +533,7 @@ body {
 
     .top-labels {
         top: 25px;
-
         padding: 0 32px;
-    }
-
-    .contact {
-        margin-top: 22px;
     }
 
     .main-logo {
@@ -553,7 +553,6 @@ body {
 
     .message {
         left: 6vw;
-
         width: 52vw;
     }
 
@@ -563,15 +562,16 @@ body {
 
     .intro {
         max-width: 48vw;
-
         font-size: 12px;
-
         line-height: 1.5;
+    }
+
+    .contact {
+        margin-top: 22px;
     }
 
     .intro-logo {
         width: 50.4vw;
-
         max-width: 360px;
     }
 
@@ -579,7 +579,7 @@ body {
 
 
 /* =========================================================
-   PORTRAIT / MOBILE
+   PORTRAIT
 ========================================================= */
 
 @media (orientation: portrait) {
@@ -594,7 +594,6 @@ body {
         padding: 0 24px;
 
         font-size: 9px;
-
         letter-spacing: 0.14em;
     }
 
@@ -608,7 +607,6 @@ body {
 
     .message {
         left: 8vw;
-
         top: 19vh;
 
         transform: none;
@@ -618,7 +616,6 @@ body {
 
     .message h1 {
         font-size: clamp(38px, 11vw, 58px);
-
         line-height: 0.98;
     }
 
@@ -628,7 +625,6 @@ body {
         max-width: 82vw;
 
         font-size: 14px;
-
         line-height: 1.55;
     }
 
@@ -646,7 +642,6 @@ body {
 
     .main-logo {
         left: 50%;
-
         top: 79vh;
 
         transform: translate(-50%, -50%);
@@ -656,7 +651,6 @@ body {
 
     .intro-logo {
         width: 81.6vw;
-
         max-width: 396px;
     }
 
@@ -664,14 +658,13 @@ body {
 
 
 /* =========================================================
-   VERY SMALL MOBILE
+   VERY SMALL PORTRAIT
 ========================================================= */
 
 @media (max-width: 380px) and (orientation: portrait) {
 
     .top-labels {
         padding: 0 18px;
-
         font-size: 8px;
     }
 
@@ -685,7 +678,6 @@ body {
 
     .intro {
         margin-top: 20px;
-
         font-size: 13px;
     }
 
@@ -699,7 +691,6 @@ body {
 
     .main-logo {
         top: 79vh;
-
         bottom: auto;
 
         width: 270px;
@@ -724,11 +715,8 @@ body {
 
     .page {
         transform: none;
-
         opacity: 1;
-
         filter: none;
-
         animation: none;
     }
 
@@ -748,7 +736,7 @@ body {
 <div class="page">
 
 
-    <!-- Top descriptor words -->
+    <!-- Descriptor words -->
 
     <div class="top-labels">
 
@@ -761,7 +749,7 @@ body {
     </div>
 
 
-    <!-- Frosted ribbed glass -->
+    <!-- Ribbed glass behind logo -->
 
     <div class="glass"></div>
 
@@ -775,7 +763,9 @@ body {
     >
 
 
-    <!-- Main website message -->
+    <!-- ===================================================
+         WEBSITE COMING SOON MESSAGE
+    ==================================================== -->
 
     <div class="message">
 
@@ -793,8 +783,6 @@ body {
 
         </div>
 
-
-        <!-- Contact -->
 
         <div class="contact">
 
@@ -826,23 +814,19 @@ body {
 
     <div class="intro-logo">
 
-
-        <!-- Real MSI logo -->
-
         <img
             src="MSI 2025 Rebrand Logo.png"
             alt="MSI Architecture"
         >
 
 
-        <!-- Reveal from centre outward -->
+        <!-- Centre outward reveal -->
 
         <div class="logo-reveal-left"></div>
-
         <div class="logo-reveal-right"></div>
 
 
-        <!-- Disappear from centre outward -->
+        <!-- Centre outward disappearance -->
 
         <div class="logo-conceal"></div>
 
@@ -853,3 +837,4 @@ body {
 
 </body>
 </html>
+```
