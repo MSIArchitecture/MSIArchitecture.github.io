@@ -46,28 +46,28 @@ body {
     background: #ffffff;
 
     animation:
-        introFadeOut 1.2s cubic-bezier(.77,0,.18,1) 3.15s forwards;
+        introFadeOut 1.2s cubic-bezier(.77,0,.18,1) 2.15s forwards;
 
     pointer-events: none;
 }
 
 
 /* =========================
-   INTRO LOGO
+   BESPOKE MSI LOGO REVEAL
 ========================= */
 
 .intro-logo {
     position: relative;
 
-    width: clamp(264px, 33.6vw, 504px);
+    width: clamp(330px, 42vw, 630px);
 
     opacity: 1;
-
-    overflow: hidden;
-
-    animation:
-        logoFadeOut 0.01s linear 2.70s forwards;
 }
+
+
+/* =========================
+   INTRO LOGO IMAGE
+========================= */
 
 .intro-logo img {
     display: block;
@@ -78,85 +78,124 @@ body {
 
 
 /* =========================
-   CENTRE REVEAL / CONCEAL
+   CENTRE MASKS
 ========================= */
 
-/*
-   The logo itself is masked using clip-path.
-   A centre slice reveals the logo outward.
-   For the disappearance, the visible area closes
-   back toward the centre, then the entire logo
-   is removed before the page transition begins.
-*/
+.intro-logo::before,
+.intro-logo::after {
+    content: "";
 
-.intro-logo {
-    clip-path: inset(0 50% 0 50%);
+    position: absolute;
+
+    top: 0;
+    bottom: 0;
+
+    width: 50%;
+
+    background: #ffffff;
+
+    z-index: 2;
+
+    transform: scaleX(1);
+}
+
+
+/* =========================
+   LEFT MASK
+========================= */
+
+.intro-logo::before {
+
+    left: 0;
+
+    transform-origin: right center;
 
     animation:
-        logoReveal 1.35s cubic-bezier(.77,0,.18,1) 0.25s forwards,
-        logoConceal 1.05s cubic-bezier(.77,0,.18,1) 1.75s forwards,
-        logoFadeOut 0.01s linear 2.85s forwards;
+        logoRevealLeft 1.35s cubic-bezier(.77,0,.18,1) 0.25s forwards,
+        logoConcealLeft 1.10s cubic-bezier(.77,0,.18,1) 1.70s forwards;
 }
 
 
 /* =========================
-   LOGO REVEAL
+   RIGHT MASK
+========================= */
+
+.intro-logo::after {
+
+    right: 0;
+
+    transform-origin: left center;
+
+    animation:
+        logoRevealRight 1.35s cubic-bezier(.77,0,.18,1) 0.25s forwards,
+        logoConcealRight 1.10s cubic-bezier(.77,0,.18,1) 1.70s forwards;
+}
+
+
+/* =========================
+   REVEAL — LEFT SIDE
    CENTRE → OUTWARD
 ========================= */
 
-@keyframes logoReveal {
+@keyframes logoRevealLeft {
 
     0% {
-        clip-path: inset(0 50% 0 50%);
+        transform: scaleX(1);
     }
 
     100% {
-        clip-path: inset(0 0 0 0);
+        transform: scaleX(0);
     }
 }
 
 
 /* =========================
-   LOGO DISAPPEAR
+   REVEAL — RIGHT SIDE
    CENTRE → OUTWARD
 ========================= */
 
-@keyframes logoConceal {
+@keyframes logoRevealRight {
 
     0% {
-        clip-path: inset(0 0 0 0);
-    }
-
-    20% {
-        clip-path: inset(0 10% 0 10%);
-    }
-
-    45% {
-        clip-path: inset(0 25% 0 25%);
-    }
-
-    70% {
-        clip-path: inset(0 40% 0 40%);
+        transform: scaleX(1);
     }
 
     100% {
-        clip-path: inset(0 50% 0 50%);
+        transform: scaleX(0);
     }
 }
 
 
 /* =========================
-   FULL LOGO REMOVAL
+   DISAPPEAR — LEFT SIDE
+   CENTRE → OUTWARD
 ========================= */
 
-@keyframes logoFadeOut {
+@keyframes logoConcealLeft {
 
-    from {
-        opacity: 1;
+    0% {
+        transform: scaleX(0);
     }
 
-    to {
-        opacity: 0;
+    100% {
+        transform: scaleX(1);
+    }
+}
+
+
+/* =========================
+   DISAPPEAR — RIGHT SIDE
+   CENTRE → OUTWARD
+========================= */
+
+@keyframes logoConcealRight {
+
+    0% {
+        transform: scaleX(0);
+    }
+
+    100% {
+        transform: scaleX(1);
     }
 }
 
@@ -201,7 +240,7 @@ body {
     opacity: 0;
 
     animation:
-        pageReveal 1.3s cubic-bezier(.77,0,.18,1) 3.15s forwards;
+        pageReveal 1.3s cubic-bezier(.77,0,.18,1) 2.05s forwards;
 }
 
 
@@ -464,8 +503,8 @@ body {
     }
 
     .intro-logo {
-        width: 81.6vw;
-        max-width: 396px;
+        width: 102vw;
+        max-width: 495px;
     }
 
     .practice {
@@ -545,8 +584,8 @@ body {
     }
 
     .intro-logo {
-        width: 50.4vw;
-        max-width: 360px;
+        width: 63vw;
+        max-width: 450px;
     }
 
     .practice {
