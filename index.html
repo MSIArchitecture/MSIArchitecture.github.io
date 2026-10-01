@@ -150,12 +150,6 @@ body {
 .logo {
     position: absolute;
 
-    /*
-       Desktop:
-       large logo positioned in the open space
-       to the right of the main text.
-    */
-
     left: 72vw;
     top: 50%;
 
@@ -336,18 +330,18 @@ body {
     }
 
     /*
-       Portrait:
-       logo centred horizontally and placed
-       in the lower area between the contact
-       details and the bottom of the screen.
+       Portrait mobile:
+       Logo centred horizontally.
+       Logo centre positioned in the lower
+       space between the contact details
+       and the bottom of the page.
     */
 
     .logo {
         left: 50%;
-        top: auto;
-        bottom: 7vh;
+        top: 79vh;
 
-        transform: translateX(-50%);
+        transform: translate(-50%, -50%);
 
         width: clamp(270px, 72vw, 390px);
     }
@@ -408,12 +402,6 @@ body {
         height: 88vh;
     }
 
-    /*
-       Landscape:
-       same enlarged, vertically centred treatment
-       as desktop.
-    */
-
     .logo {
         left: 75%;
         top: 50%;
@@ -457,9 +445,12 @@ body {
     }
 
     .logo {
-        bottom: 5vh;
+        top: 79vh;
+        bottom: auto;
 
         width: 270px;
+
+        transform: translate(-50%, -50%);
     }
 }
 
