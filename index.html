@@ -3,13 +3,11 @@
 <head>
 
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>MSI Architecture | Coming Soon</title>
 
 <meta name="description" content="MSI Architecture — our new website is currently under development.">
-
 
 <style>
 
@@ -37,7 +35,7 @@ body {
 
 
 /* =========================================================
-   MAIN BACKGROUND
+   MAIN PAGE
    ========================================================= */
 
 .page {
@@ -45,6 +43,7 @@ body {
 
     width: 100%;
     min-height: 100vh;
+    min-height: 100svh;
 
     overflow: hidden;
 
@@ -59,7 +58,7 @@ body {
 
 
 /* =========================================================
-   SUBTLE ARCHITECTURAL BACKGROUND PLANES
+   ARCHITECTURAL BACKGROUND
    ========================================================= */
 
 .architecture {
@@ -95,7 +94,7 @@ body {
 
 
 /* =========================================================
-   RIBBED GLASS EFFECT
+   RIBBED GLASS
    ========================================================= */
 
 .glass-zone {
@@ -127,8 +126,6 @@ body {
 }
 
 
-/* Vertical glass ribs */
-
 .glass-zone::before {
 
     content: "";
@@ -142,10 +139,8 @@ body {
             90deg,
             rgba(255,255,255,0.00) 0px,
             rgba(255,255,255,0.00) 7px,
-
             rgba(255,255,255,0.58) 8px,
             rgba(255,255,255,0.58) 10px,
-
             rgba(170,170,168,0.08) 11px,
             rgba(170,170,168,0.08) 16px
         );
@@ -155,7 +150,7 @@ body {
 
 
 /* =========================================================
-   LOGO
+   TEMPORARY MSI LOGO
    ========================================================= */
 
 .logo {
@@ -165,8 +160,7 @@ body {
     right: 16%;
     top: 50%;
 
-    transform:
-        translateY(-50%);
+    transform: translateY(-50%);
 
     display: flex;
 
@@ -177,8 +171,6 @@ body {
     z-index: 5;
 }
 
-
-/* Three main MSI blocks */
 
 .logo-top {
 
@@ -209,8 +201,6 @@ body {
     line-height: 1;
 }
 
-
-/* Logo bars underneath */
 
 .logo-bottom {
 
@@ -259,6 +249,7 @@ body {
     width: 100%;
 
     min-height: 100vh;
+    min-height: 100svh;
 
     padding: 55px 6vw;
 
@@ -295,7 +286,6 @@ body {
     max-width: 670px;
 
     margin-top: auto;
-
     margin-bottom: auto;
 }
 
@@ -383,80 +373,38 @@ h1 {
 
 
 /* =========================================================
-   MOBILE
+   PORTRAIT PHONES
    ========================================================= */
 
-@media (max-width: 800px) {
+@media (max-width: 800px) and (orientation: portrait) {
 
     .page {
 
         min-height: 100svh;
 
-        overflow: auto;
+        overflow: hidden;
     }
 
 
     .content {
 
-        padding: 30px 7vw 40px;
+        padding: 28px 7vw 34px;
 
         min-height: 100svh;
+
+        justify-content: flex-start;
     }
 
 
-    .glass-zone {
+    .practice {
 
-        right: -20%;
+        font-size: 10px;
 
-        top: 45%;
+        letter-spacing: 0.14em;
 
-        width: 85%;
+        line-height: 1.5;
 
-        height: 60%;
-
-        opacity: 0.7;
-    }
-
-
-    .logo {
-
-        right: 10%;
-
-        top: 66%;
-
-        transform: translateY(-50%);
-    }
-
-
-    .logo-box {
-
-        width: 65px;
-
-        height: 65px;
-
-        font-size: 38px;
-    }
-
-
-    .logo-bottom {
-
-        margin-top: 13px;
-
-        gap: 12px;
-    }
-
-
-    .logo-line {
-
-        height: 11px;
-    }
-
-
-    .logo-small {
-
-        width: 45px;
-
-        height: 11px;
+        max-width: 90%;
     }
 
 
@@ -464,30 +412,353 @@ h1 {
 
         margin-top: 15vh;
 
-        margin-bottom: 35vh;
+        margin-bottom: 0;
+
+        max-width: 100%;
     }
 
 
     h1 {
 
-        font-size: 16vw;
+        margin-bottom: 24px;
+
+        font-size: clamp(48px, 15vw, 76px);
+
+        line-height: 0.91;
+
+        letter-spacing: -0.055em;
+
+        max-width: 95%;
     }
 
 
     .intro {
 
+        max-width: 92%;
+
         font-size: 16px;
 
-        max-width: 460px;
+        line-height: 1.5;
     }
 
 
     .contact {
 
-        margin-top: 30px;
+        margin-top: 28px;
+
+        padding-top: 12px;
+
+        gap: 6px;
+    }
+
+
+    .contact a {
+
+        font-size: 14px;
+    }
+
+
+    /* Move the architectural glass behind the lower page */
+
+    .architecture {
+
+        right: -35%;
+
+        top: 42%;
+
+        width: 115%;
+
+        height: 70%;
+
+        transform: rotate(-8deg);
+
+        opacity: 0.75;
+    }
+
+
+    .glass-zone {
+
+        right: -22%;
+
+        top: 47%;
+
+        width: 92%;
+
+        height: 58%;
+
+        opacity: 0.72;
+
+        backdrop-filter: blur(12px);
+
+        -webkit-backdrop-filter: blur(12px);
+    }
+
+
+    /* Move temporary logo into the visual area */
+
+    .logo {
+
+        right: 8%;
+
+        top: 76%;
+
+        transform: translateY(-50%);
+
+        z-index: 5;
+
+        opacity: 0.92;
+    }
+
+
+    .logo-top {
+
+        gap: 5px;
+    }
+
+
+    .logo-box {
+
+        width: 52px;
+
+        height: 52px;
+
+        font-size: 30px;
+    }
+
+
+    .logo-bottom {
+
+        margin-top: 9px;
+
+        gap: 10px;
+    }
+
+
+    .logo-line {
+
+        height: 9px;
+    }
+
+
+    .logo-small {
+
+        width: 35px;
+
+        height: 9px;
     }
 }
 
+
+/* =========================================================
+   LANDSCAPE PHONES
+   ========================================================= */
+
+@media (max-width: 900px) and (orientation: landscape) {
+
+    .page {
+
+        min-height: 100svh;
+
+        overflow: hidden;
+    }
+
+
+    .content {
+
+        min-height: 100svh;
+
+        padding: 24px 6vw;
+
+        justify-content: space-between;
+    }
+
+
+    .practice {
+
+        font-size: 9px;
+
+        letter-spacing: 0.14em;
+    }
+
+
+    .message {
+
+        margin-top: 0;
+
+        margin-bottom: 0;
+
+        max-width: 54%;
+    }
+
+
+    h1 {
+
+        margin-bottom: 16px;
+
+        font-size: clamp(38px, 7vw, 64px);
+
+        line-height: 0.9;
+    }
+
+
+    .intro {
+
+        max-width: 480px;
+
+        font-size: 14px;
+
+        line-height: 1.4;
+    }
+
+
+    .contact {
+
+        margin-top: 18px;
+
+        padding-top: 9px;
+
+        gap: 4px;
+    }
+
+
+    .contact-title {
+
+        font-size: 8px;
+
+        margin-bottom: 2px;
+    }
+
+
+    .contact a {
+
+        font-size: 12px;
+    }
+
+
+    .architecture {
+
+        right: -8%;
+
+        top: -12%;
+
+        width: 65%;
+
+        height: 125%;
+
+        transform: rotate(-7deg);
+    }
+
+
+    .glass-zone {
+
+        right: 2%;
+
+        top: 5%;
+
+        width: 48%;
+
+        height: 90%;
+
+        opacity: 0.82;
+    }
+
+
+    .logo {
+
+        right: 13%;
+
+        top: 50%;
+
+        transform: translateY(-50%);
+
+        z-index: 5;
+    }
+
+
+    .logo-top {
+
+        gap: 5px;
+    }
+
+
+    .logo-box {
+
+        width: 48px;
+
+        height: 48px;
+
+        font-size: 28px;
+    }
+
+
+    .logo-bottom {
+
+        margin-top: 9px;
+
+        gap: 10px;
+    }
+
+
+    .logo-line {
+
+        height: 8px;
+    }
+
+
+    .logo-small {
+
+        width: 34px;
+
+        height: 8px;
+    }
+}
+
+
+/* =========================================================
+   VERY SMALL PORTRAIT PHONES
+   ========================================================= */
+
+@media (max-width: 390px) and (orientation: portrait) {
+
+    .content {
+
+        padding-left: 6vw;
+
+        padding-right: 6vw;
+    }
+
+
+    .message {
+
+        margin-top: 11vh;
+    }
+
+
+    h1 {
+
+        font-size: 14vw;
+
+        margin-bottom: 20px;
+    }
+
+
+    .intro {
+
+        font-size: 15px;
+    }
+
+
+    .contact {
+
+        margin-top: 24px;
+    }
+
+
+    .logo {
+
+        top: 78%;
+    }
+}
 
 </style>
 
@@ -496,30 +767,23 @@ h1 {
 
 <body>
 
-
 <div class="page">
 
-
-    <!-- Subtle architectural background -->
 
     <div class="architecture"></div>
 
 
-    <!-- Frosted ribbed glass -->
-
     <div class="glass-zone"></div>
 
 
-    <!-- MSI temporary logo -->
+    <!-- Temporary MSI logo -->
 
     <div class="logo">
 
         <div class="logo-top">
 
             <div class="logo-box">M</div>
-
             <div class="logo-box">S</div>
-
             <div class="logo-box">I</div>
 
         </div>
@@ -535,8 +799,6 @@ h1 {
 
     </div>
 
-
-    <!-- Main content -->
 
     <div class="content">
 
