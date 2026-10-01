@@ -10,315 +10,28 @@
 <style>
 
 * {
-    margin: 0;
-    padding: 0;
     box-sizing: border-box;
 }
 
 html,
 body {
+    margin: 0;
+    padding: 0;
     width: 100%;
-    height: 100%;
-    overflow: hidden;
+    min-height: 100%;
+}
+
+body {
     font-family: Arial, Helvetica, sans-serif;
     background: #f7f7f5;
     color: #222;
-}
-
-
-/* =========================================================
-   MAIN PAGE
-========================================================= */
-
-.page {
-    position: fixed;
-    inset: 0;
     overflow: hidden;
-
-    /* IMPORTANT:
-       Keeps background layers behind page content */
-    isolation: isolate;
-
-    background:
-        linear-gradient(
-            115deg,
-            rgba(255,255,255,0.98) 0%,
-            rgba(246,246,243,0.96) 42%,
-            rgba(239,239,235,0.92) 100%
-        );
-
-    transform: scale(0.92);
-    opacity: 0;
-    filter: blur(5px);
-
-    transform-origin: center center;
-
-    animation:
-        pageForward 1.45s cubic-bezier(0.16, 1, 0.3, 1) 2.45s forwards;
-}
-
-
-/* =========================================================
-   ARCHITECTURAL BACKGROUND
-========================================================= */
-
-.page::before {
-    content: "";
-    position: absolute;
-    inset: -15%;
-
-    z-index: 0;
-
-    background:
-        linear-gradient(
-            110deg,
-            transparent 0%,
-            transparent 35%,
-            rgba(255,255,255,0.72) 35.2%,
-            rgba(255,255,255,0.72) 35.5%,
-            transparent 35.7%
-        ),
-        linear-gradient(
-            70deg,
-            transparent 0%,
-            transparent 63%,
-            rgba(255,255,255,0.55) 63.2%,
-            rgba(255,255,255,0.55) 63.5%,
-            transparent 63.7%
-        );
-
-    transform: rotate(-2deg);
-
-    pointer-events: none;
-}
-
-
-/* Large architectural plane */
-
-.page::after {
-    content: "";
-    position: absolute;
-
-    width: 65vw;
-    height: 120vh;
-
-    right: -15vw;
-    top: -10vh;
-
-    z-index: 0;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(255,255,255,0.65),
-            rgba(225,225,220,0.42)
-        );
-
-    transform:
-        perspective(1000px)
-        rotateY(-18deg)
-        rotateZ(4deg);
-
-    box-shadow:
-        -40px 0 100px rgba(0,0,0,0.035);
-
-    pointer-events: none;
-}
-
-
-/* =========================================================
-   TOP DESCRIPTOR WORDS
-========================================================= */
-
-.top-labels {
-    position: absolute;
-
-    top: 42px;
-    left: 0;
-
-    width: 100%;
-
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-
-    padding: 0 48px;
-
-    font-size: 11px;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-
-    color: #333;
-
-    z-index: 20;
-}
-
-.top-labels span:nth-child(1) {
-    text-align: left;
-}
-
-.top-labels span:nth-child(2) {
-    text-align: center;
-}
-
-.top-labels span:nth-child(3) {
-    text-align: right;
-}
-
-
-/* =========================================================
-   FROSTED / RIBBED GLASS
-========================================================= */
-
-.glass {
-    position: absolute;
-
-    right: 4vw;
-    top: 7vh;
-
-    width: 31vw;
-    height: 86vh;
-
-    z-index: 5;
-
-    background:
-        repeating-linear-gradient(
-            90deg,
-            rgba(255,255,255,0.48) 0px,
-            rgba(255,255,255,0.48) 3px,
-            rgba(215,215,211,0.28) 4px,
-            rgba(255,255,255,0.22) 10px
-        );
-
-    backdrop-filter: blur(4px);
-
-    border-left: 1px solid rgba(255,255,255,0.8);
-    border-right: 1px solid rgba(255,255,255,0.65);
-
-    box-shadow:
-        -30px 0 80px rgba(0,0,0,0.045),
-        30px 0 80px rgba(255,255,255,0.4);
-
-    pointer-events: none;
-}
-
-
-/* =========================================================
-   MAIN MSI LOGO
-========================================================= */
-
-.main-logo {
-    position: absolute;
-
-    left: 72vw;
-    top: 50%;
-
-    transform: translate(-50%, -50%);
-
-    width: clamp(330px, 34vw, 520px);
-
-    height: auto;
-
-    z-index: 15;
-}
-
-
-/* =========================================================
-   MAIN WEBSITE MESSAGE
-========================================================= */
-
-.message {
-    position: absolute;
-
-    left: 7vw;
-    top: 50%;
-
-    transform: translateY(-50%);
-
-    width: min(620px, 48vw);
-
-    z-index: 20;
-
-    display: block;
-
-    visibility: visible;
-}
-
-.message h1 {
-    margin: 0;
-
-    font-size: clamp(48px, 5vw, 82px);
-
-    line-height: 0.98;
-
-    font-weight: 500;
-
-    letter-spacing: -0.045em;
-
-    color: #222;
-}
-
-.intro {
-    margin-top: 32px;
-
-    max-width: 510px;
-
-    font-size: 17px;
-
-    line-height: 1.65;
-
-    color: #555;
-}
-
-
-/* =========================================================
-   CONTACT
-========================================================= */
-
-.contact {
-    margin-top: 48px;
-
-    display: flex;
-    flex-direction: column;
-
-    align-items: flex-start;
-
-    gap: 6px;
-
-    z-index: 20;
-}
-
-.contact-title {
-    margin-bottom: 6px;
-
-    font-size: 10px;
-
-    line-height: 1;
-
-    letter-spacing: 0.18em;
-
-    text-transform: uppercase;
-
-    color: #888;
-}
-
-.contact a {
-    color: #222;
-
-    font-size: 14px;
-
-    text-decoration: none;
-
-    border-bottom: 1px solid rgba(34,34,34,0.22);
-}
-
-.contact a:hover {
-    border-bottom-color: #222;
 }
 
 
 /* =========================================================
    INTRO SCREEN
-========================================================= */
+   ========================================================= */
 
 .intro-screen {
     position: fixed;
@@ -326,23 +39,26 @@ body {
 
     z-index: 100;
 
-    background: #fff;
+    background: #ffffff;
 
     display: flex;
-
     align-items: center;
     justify-content: center;
 
     overflow: hidden;
 
+    /*
+       The intro remains over the main page while the main
+       page begins its own reveal underneath.
+    */
     animation:
-        introSlideAway 1.25s cubic-bezier(0.77, 0, 0.175, 1) 2.45s forwards;
+        introSlideAway 1.25s cubic-bezier(.77,0,.175,1) 2.45s forwards;
 }
 
 
 /* =========================================================
    INTRO LOGO
-========================================================= */
+   ========================================================= */
 
 .intro-logo {
     position: relative;
@@ -369,8 +85,8 @@ body {
 
 
 /* =========================================================
-   INTRO LOGO REVEAL
-========================================================= */
+   INTRO LOGO — CENTRE OUT REVEAL
+   ========================================================= */
 
 .logo-reveal-left,
 .logo-reveal-right {
@@ -381,7 +97,7 @@ body {
     width: 50%;
     height: 100%;
 
-    background: #fff;
+    background: #ffffff;
 
     z-index: 3;
 
@@ -394,8 +110,11 @@ body {
     transform: translateX(0);
 
     animation:
-        revealLeft 1s cubic-bezier(0.77, 0, 0.175, 1)
-        0.25s forwards;
+        revealLeft
+        1s
+        cubic-bezier(.77,0,.175,1)
+        .25s
+        forwards;
 }
 
 .logo-reveal-right {
@@ -404,14 +123,17 @@ body {
     transform: translateX(0);
 
     animation:
-        revealRight 1s cubic-bezier(0.77, 0, 0.175, 1)
-        0.25s forwards;
+        revealRight
+        1s
+        cubic-bezier(.77,0,.175,1)
+        .25s
+        forwards;
 }
 
 
 /* =========================================================
-   INTRO LOGO DISAPPEARANCE
-========================================================= */
+   INTRO LOGO — CENTRE OUT DISAPPEAR
+   ========================================================= */
 
 .logo-conceal {
     position: absolute;
@@ -422,7 +144,7 @@ body {
     width: 0;
     height: 100%;
 
-    background: #fff;
+    background: #ffffff;
 
     transform: translateX(-50%);
 
@@ -431,14 +153,17 @@ body {
     pointer-events: none;
 
     animation:
-        concealLogo 0.9s cubic-bezier(0.77, 0, 0.175, 1)
-        1.55s forwards;
+        concealLogo
+        .9s
+        cubic-bezier(.77,0,.175,1)
+        1.55s
+        forwards;
 }
 
 
 /* =========================================================
-   LOGO ANIMATIONS
-========================================================= */
+   INTRO ANIMATION
+   ========================================================= */
 
 @keyframes revealLeft {
 
@@ -449,7 +174,6 @@ body {
     100% {
         transform: translateX(-105%);
     }
-
 }
 
 @keyframes revealRight {
@@ -461,7 +185,6 @@ body {
     100% {
         transform: translateX(105%);
     }
-
 }
 
 @keyframes concealLogo {
@@ -473,44 +196,7 @@ body {
     100% {
         width: 110%;
     }
-
 }
-
-
-/* =========================================================
-   MAIN PAGE FORWARD MOTION
-========================================================= */
-
-@keyframes pageForward {
-
-    0% {
-        transform: scale(0.92);
-        opacity: 0;
-        filter: blur(5px);
-    }
-
-    35% {
-        opacity: 0.55;
-        filter: blur(2.5px);
-    }
-
-    70% {
-        opacity: 0.88;
-        filter: blur(0.8px);
-    }
-
-    100% {
-        transform: scale(1);
-        opacity: 1;
-        filter: blur(0);
-    }
-
-}
-
-
-/* =========================================================
-   INTRO SLIDES AWAY
-========================================================= */
 
 @keyframes introSlideAway {
 
@@ -521,92 +207,362 @@ body {
     100% {
         transform: translateX(-100%);
     }
-
 }
 
 
 /* =========================================================
-   LANDSCAPE
-========================================================= */
+   MAIN PAGE
+   ========================================================= */
 
-@media (max-height: 600px) and (orientation: landscape) {
+.page {
+    position: relative;
 
-    .top-labels {
-        top: 25px;
-        padding: 0 32px;
+    width: 100vw;
+    height: 100vh;
+
+    min-height: 600px;
+
+    overflow: hidden;
+
+    isolation: isolate;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,0.98) 0%,
+            rgba(247,247,245,0.98) 52%,
+            rgba(238,238,235,0.98) 100%
+        );
+
+    opacity: 0;
+
+    /*
+       This is the main-page transition from your supplied
+       version: a left-to-right clip-path reveal.
+
+       It starts underneath the intro so the two transitions
+       overlap naturally.
+    */
+    animation:
+        pageReveal
+        1.3s
+        cubic-bezier(.77,0,.18,1)
+        2.05s
+        forwards;
+}
+
+
+@keyframes pageReveal {
+
+    0% {
+        opacity: 0;
+
+        clip-path: inset(
+            0 100% 0 0
+        );
     }
 
-    .main-logo {
-        left: 75%;
-        top: 50%;
+    100% {
+        opacity: 1;
 
-        width: clamp(230px, 34vw, 360px);
+        clip-path: inset(
+            0 0 0 0
+        );
     }
-
-    .glass {
-        right: 3vw;
-        top: 6vh;
-
-        width: 38vw;
-        height: 88vh;
-    }
-
-    .message {
-        left: 6vw;
-        width: 52vw;
-    }
-
-    .message h1 {
-        font-size: clamp(34px, 6vw, 58px);
-    }
-
-    .intro {
-        max-width: 48vw;
-        font-size: 12px;
-        line-height: 1.5;
-    }
-
-    .contact {
-        margin-top: 22px;
-    }
-
-    .intro-logo {
-        width: 50.4vw;
-        max-width: 360px;
-    }
-
 }
 
 
 /* =========================================================
-   PORTRAIT
-========================================================= */
+   ARCHITECTURAL BACKGROUND
+   ========================================================= */
 
-@media (orientation: portrait) {
+.architecture {
+    position: absolute;
 
-    .page {
+    inset: 0;
+
+    overflow: hidden;
+
+    z-index: 1;
+}
+
+.architecture::before {
+    content: "";
+
+    position: absolute;
+
+    width: 58vw;
+    height: 125vh;
+
+    left: 40%;
+    top: -8%;
+
+    transform: skewX(-14deg);
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,0.98) 0%,
+            rgba(244,244,241,0.95) 48%,
+            rgba(224,224,220,0.90) 100%
+        );
+
+    box-shadow:
+        -30px 0 70px rgba(0,0,0,0.035);
+}
+
+.architecture::after {
+    content: "";
+
+    position: absolute;
+
+    width: 42vw;
+    height: 90vh;
+
+    right: -10%;
+    bottom: -25%;
+
+    transform: rotate(-12deg);
+
+    background:
+        linear-gradient(
+            120deg,
+            rgba(255,255,255,0.95),
+            rgba(229,229,225,0.82)
+        );
+
+    box-shadow:
+        0 -30px 80px rgba(0,0,0,0.035);
+}
+
+
+/* =========================================================
+   FROSTED / RIBBED GLASS
+   ========================================================= */
+
+.glass-zone {
+    position: absolute;
+
+    right: 4vw;
+    top: 7vh;
+
+    width: 31vw;
+    height: 86vh;
+
+    z-index: 2;
+
+    background:
+        repeating-linear-gradient(
+            90deg,
+            rgba(255,255,255,0.48) 0px,
+            rgba(255,255,255,0.48) 3px,
+            rgba(215,215,211,0.28) 4px,
+            rgba(255,255,255,0.22) 10px
+        );
+
+    backdrop-filter: blur(4px);
+
+    border-left:
+        1px solid rgba(255,255,255,0.8);
+
+    border-right:
+        1px solid rgba(255,255,255,0.65);
+
+    box-shadow:
+        -30px 0 80px rgba(0,0,0,0.045),
+        30px 0 80px rgba(255,255,255,0.4);
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   REAL MSI LOGO
+   ========================================================= */
+
+.logo {
+    position: absolute;
+
+    left: 72vw;
+    top: 50%;
+
+    transform:
+        translate(-50%, -50%);
+
+    width:
+        clamp(330px, 34vw, 520px);
+
+    z-index: 6;
+}
+
+.logo img {
+    display: block;
+
+    width: 100%;
+    height: auto;
+}
+
+
+/* =========================================================
+   PRACTICE TYPE
+   ========================================================= */
+
+.practice {
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    top: 4vh;
+
+    z-index: 6;
+
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 0 7vw;
+
+    font-size: 11px;
+
+    letter-spacing: 0.18em;
+
+    text-transform: uppercase;
+
+    color: #555;
+}
+
+.practice span {
+    display: block;
+}
+
+
+/* =========================================================
+   MAIN MESSAGE
+   ========================================================= */
+
+.message {
+    position: absolute;
+
+    left: 7vw;
+    top: 50%;
+
+    transform:
+        translateY(-50%);
+
+    width:
+        min(620px, 48vw);
+
+    z-index: 6;
+}
+
+.message h1 {
+    margin: 0;
+
+    font-size:
+        clamp(48px, 5vw, 82px);
+
+    line-height: 0.98;
+
+    font-weight: 500;
+
+    letter-spacing: -0.045em;
+
+    color: #222;
+}
+
+.intro {
+    margin-top: 32px;
+
+    max-width: 510px;
+
+    font-size: 17px;
+
+    line-height: 1.65;
+
+    color: #555;
+}
+
+.contact {
+    margin-top: 48px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 6px;
+}
+
+.contact-title {
+    margin-bottom: 6px;
+
+    font-size: 10px;
+
+    line-height: 1;
+
+    letter-spacing: 0.18em;
+
+    text-transform: uppercase;
+
+    color: #888;
+}
+
+.contact a {
+    color: #222;
+
+    font-size: 14px;
+
+    text-decoration: none;
+
+    border-bottom:
+        1px solid rgba(34,34,34,0.22);
+}
+
+.contact a:hover {
+    border-bottom-color: #222;
+}
+
+
+/* =========================================================
+   PORTRAIT MOBILE
+   ========================================================= */
+
+@media (max-width: 700px) and (orientation: portrait) {
+
+    body {
         overflow: hidden;
     }
 
-    .top-labels {
-        top: 28px;
+    .page {
+        height: 100svh;
 
-        padding: 0 24px;
-
-        font-size: 9px;
-        letter-spacing: 0.14em;
+        min-height: 560px;
     }
 
-    .glass {
-        right: -8vw;
-        top: 52vh;
+    .intro-logo {
+        width: 81.6vw;
 
-        width: 72vw;
-        height: 54vh;
+        max-width: 396px;
+    }
+
+    .practice {
+        left: 0;
+        right: 0;
+
+        top: 3vh;
+
+        padding: 0 8vw;
+
+        font-size: 8px;
+
+        letter-spacing: 0.15em;
     }
 
     .message {
         left: 8vw;
+
         top: 19vh;
 
         transform: none;
@@ -615,7 +571,9 @@ body {
     }
 
     .message h1 {
-        font-size: clamp(38px, 11vw, 58px);
+        font-size:
+            clamp(38px, 11vw, 58px);
+
         line-height: 0.98;
     }
 
@@ -625,6 +583,7 @@ body {
         max-width: 82vw;
 
         font-size: 14px;
+
         line-height: 1.55;
     }
 
@@ -640,32 +599,126 @@ body {
         font-size: 12px;
     }
 
-    .main-logo {
+    .glass-zone {
+        right: -8vw;
+
+        top: 52vh;
+
+        width: 72vw;
+
+        height: 54vh;
+    }
+
+    .logo {
         left: 50%;
+
         top: 79vh;
 
-        transform: translate(-50%, -50%);
+        transform:
+            translate(-50%, -50%);
 
-        width: clamp(270px, 72vw, 390px);
+        width:
+            clamp(270px, 72vw, 390px);
+    }
+}
+
+
+/* =========================================================
+   LANDSCAPE MOBILE
+   ========================================================= */
+
+@media (max-width: 900px) and (orientation: landscape) {
+
+    .page {
+        height: 100svh;
+
+        min-height: 420px;
     }
 
     .intro-logo {
-        width: 81.6vw;
-        max-width: 396px;
+        width: 50.4vw;
+
+        max-width: 360px;
     }
 
+    .practice {
+        left: 0;
+        right: 0;
+
+        top: 4vh;
+
+        padding: 0 6vw;
+
+        font-size: 8px;
+
+        letter-spacing: 0.15em;
+    }
+
+    .message {
+        left: 6vw;
+
+        top: 52%;
+
+        width: 52vw;
+    }
+
+    .message h1 {
+        font-size:
+            clamp(34px, 6vw, 58px);
+    }
+
+    .intro {
+        margin-top: 20px;
+
+        max-width: 48vw;
+
+        font-size: 12px;
+
+        line-height: 1.5;
+    }
+
+    .contact {
+        margin-top: 22px;
+    }
+
+    .contact a {
+        font-size: 11px;
+    }
+
+    .glass-zone {
+        right: 3vw;
+
+        top: 6vh;
+
+        width: 38vw;
+
+        height: 88vh;
+    }
+
+    .logo {
+        left: 75%;
+
+        top: 50%;
+
+        transform:
+            translate(-50%, -50%);
+
+        width:
+            clamp(230px, 34vw, 360px);
+    }
 }
 
 
 /* =========================================================
    VERY SMALL PORTRAIT
-========================================================= */
+   ========================================================= */
 
 @media (max-width: 380px) and (orientation: portrait) {
 
-    .top-labels {
-        padding: 0 18px;
-        font-size: 8px;
+    .practice {
+        top: 3vh;
+
+        padding: 0 7vw;
     }
 
     .message {
@@ -678,6 +731,7 @@ body {
 
     .intro {
         margin-top: 20px;
+
         font-size: 13px;
     }
 
@@ -685,27 +739,30 @@ body {
         margin-top: 25px;
     }
 
-    .glass {
+    .glass-zone {
         top: 55vh;
     }
 
-    .main-logo {
+    .logo {
         top: 79vh;
+
         bottom: auto;
 
         width: 270px;
+
+        transform:
+            translate(-50%, -50%);
     }
 
     .intro-logo {
         width: 270px;
     }
-
 }
 
 
 /* =========================================================
-   ACCESSIBILITY
-========================================================= */
+   REDUCED MOTION
+   ========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
 
@@ -714,12 +771,12 @@ body {
     }
 
     .page {
-        transform: none;
-        opacity: 1;
-        filter: none;
         animation: none;
-    }
 
+        opacity: 1;
+
+        clip-path: none;
+    }
 }
 
 </style>
@@ -730,15 +787,65 @@ body {
 
 
 <!-- =======================================================
+     INTRO SCREEN
+     ======================================================= -->
+
+<div class="intro-screen">
+
+    <div class="intro-logo">
+
+        <img
+            src="MSI 2025 Rebrand Logo.png"
+            alt="MSI Architecture"
+        >
+
+        <!-- Centre-out logo reveal -->
+
+        <div class="logo-reveal-left"></div>
+
+        <div class="logo-reveal-right"></div>
+
+        <!-- Centre-out logo disappearance -->
+
+        <div class="logo-conceal"></div>
+
+    </div>
+
+</div>
+
+
+<!-- =======================================================
      MAIN PAGE
-======================================================= -->
+     ======================================================= -->
 
 <div class="page">
 
 
-    <!-- Descriptor words -->
+    <!-- Architectural background -->
 
-    <div class="top-labels">
+    <div class="architecture"></div>
+
+
+    <!-- Frosted / ribbed glass -->
+
+    <div class="glass-zone"></div>
+
+
+    <!-- MSI Architecture logo -->
+
+    <div class="logo">
+
+        <img
+            src="MSI 2025 Rebrand Logo.png"
+            alt="MSI Architecture"
+        >
+
+    </div>
+
+
+    <!-- Practice disciplines -->
+
+    <div class="practice">
 
         <span>Architecture</span>
 
@@ -749,23 +856,7 @@ body {
     </div>
 
 
-    <!-- Ribbed glass behind logo -->
-
-    <div class="glass"></div>
-
-
-    <!-- Main MSI logo -->
-
-    <img
-        class="main-logo"
-        src="MSI 2025 Rebrand Logo.png"
-        alt="MSI Architecture"
-    >
-
-
-    <!-- ===================================================
-         WEBSITE COMING SOON MESSAGE
-    ==================================================== -->
+    <!-- Main message -->
 
     <div class="message">
 
@@ -783,6 +874,8 @@ body {
 
         </div>
 
+
+        <!-- Contact -->
 
         <div class="contact">
 
@@ -802,35 +895,6 @@ body {
 
     </div>
 
-</div>
-
-
-
-<!-- =======================================================
-     OPENING INTRO
-======================================================= -->
-
-<div class="intro-screen">
-
-    <div class="intro-logo">
-
-        <img
-            src="MSI 2025 Rebrand Logo.png"
-            alt="MSI Architecture"
-        >
-
-
-        <!-- Centre outward reveal -->
-
-        <div class="logo-reveal-left"></div>
-        <div class="logo-reveal-right"></div>
-
-
-        <!-- Centre outward disappearance -->
-
-        <div class="logo-conceal"></div>
-
-    </div>
 
 </div>
 
