@@ -29,6 +29,117 @@ body {
 
 
 /* =========================
+   INTRO SCREEN
+========================= */
+
+.intro-screen {
+    position: fixed;
+    inset: 0;
+
+    z-index: 100;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #ffffff;
+
+    animation:
+        introFadeOut 1.2s cubic-bezier(.77,0,.18,1) 2.15s forwards;
+
+    pointer-events: none;
+}
+
+
+/* =========================
+   BESPOKE MSI LOGO REVEAL
+========================= */
+
+.intro-logo {
+    position: relative;
+
+    width: clamp(264px, 33.6vw, 504px);
+
+    opacity: 0;
+
+    clip-path: inset(0 50% 0 50%);
+
+    animation:
+        logoReveal 1.15s cubic-bezier(.77,0,.18,1) 0.25s forwards,
+        logoConceal 0.95s cubic-bezier(.77,0,.18,1) 1.55s forwards;
+}
+
+.intro-logo img {
+    display: block;
+
+    width: 100%;
+    height: auto;
+}
+
+
+/* =========================
+   LOGO REVEALS FROM CENTRE
+========================= */
+
+@keyframes logoReveal {
+
+    0% {
+        opacity: 0;
+        clip-path: inset(0 50% 0 50%);
+        transform: scale(0.985);
+    }
+
+    20% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 1;
+        clip-path: inset(0 0 0 0);
+        transform: scale(1);
+    }
+}
+
+
+/* =========================
+   LOGO DISAPPEARS FROM CENTRE
+========================= */
+
+@keyframes logoConceal {
+
+    0% {
+        opacity: 1;
+        clip-path: inset(0 0 0 0);
+        transform: scale(1);
+    }
+
+    100% {
+        opacity: 0;
+        clip-path: inset(0 50% 0 50%);
+        transform: scale(0.985);
+    }
+}
+
+
+/* =========================
+   WHITE INTRO TRANSITION
+========================= */
+
+@keyframes introFadeOut {
+
+    0% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+}
+
+
+/* =========================
    MAIN PAGE
 ========================= */
 
@@ -46,6 +157,29 @@ body {
             rgba(247,247,245,0.98) 52%,
             rgba(238,238,235,0.98) 100%
         );
+
+    opacity: 0;
+
+    animation:
+        pageReveal 1.3s cubic-bezier(.77,0,.18,1) 2.05s forwards;
+}
+
+
+/* =========================
+   MAIN PAGE REVEAL
+========================= */
+
+@keyframes pageReveal {
+
+    0% {
+        opacity: 0;
+        clip-path: inset(0 100% 0 0);
+    }
+
+    100% {
+        opacity: 1;
+        clip-path: inset(0 0 0 0);
+    }
 }
 
 
@@ -289,6 +423,11 @@ body {
         min-height: 560px;
     }
 
+    .intro-logo {
+        width: 81.6vw;
+        max-width: 396px;
+    }
+
     .practice {
         left: 0;
         right: 0;
@@ -363,6 +502,11 @@ body {
     .page {
         height: 100svh;
         min-height: 420px;
+    }
+
+    .intro-logo {
+        width: 50.4vw;
+        max-width: 360px;
     }
 
     .practice {
@@ -464,6 +608,30 @@ body {
 
         transform: translate(-50%, -50%);
     }
+
+}
+
+
+/* =========================
+   REDUCED MOTION
+========================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .intro-screen,
+    .intro-logo,
+    .page {
+        animation: none;
+    }
+
+    .intro-screen {
+        display: none;
+    }
+
+    .page {
+        opacity: 1;
+        clip-path: none;
+    }
 }
 
 </style>
@@ -471,6 +639,29 @@ body {
 
 
 <body>
+
+
+<!-- =========================
+     INTRO LOGO
+========================= -->
+
+<div class="intro-screen">
+
+    <div class="intro-logo">
+
+        <img
+            src="MSI 2025 Rebrand Logo.png"
+            alt="MSI Architecture"
+        >
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     MAIN PAGE
+========================= -->
 
 <div class="page">
 
@@ -482,14 +673,23 @@ body {
     <!-- MSI Architecture logo -->
 
     <div class="logo">
-        <img src="MSI 2025 Rebrand Logo.png" alt="MSI Architecture">
+
+        <img
+            src="MSI 2025 Rebrand Logo.png"
+            alt="MSI Architecture"
+        >
+
     </div>
 
 
     <div class="practice">
+
         <span>Architecture</span>
+
         <span>Interiors</span>
+
         <span>Planning</span>
+
     </div>
 
 
@@ -501,9 +701,11 @@ body {
         </h1>
 
         <div class="intro">
+
             Our new website is currently under development.
             We're looking forward to sharing more about
             MSI Architecture, our work and our approach to design.
+
         </div>
 
 
@@ -526,6 +728,7 @@ body {
     </div>
 
 </div>
+
 
 </body>
 </html>
